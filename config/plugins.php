@@ -1,42 +1,41 @@
 <?php
 
+use Cake\Core\Configure;
+
+// Environment detection
+$isTest = env('CAKE_ENV') === 'test';
+$isDev = Configure::read('debug');
+
 return [
+    // Core authentication plugin - always loaded
     'Authentication' => [
         'bootstrap' => true,
     ],
+    
+    // Queue system - always load but with different config in tests
     'Cake/Queue' => [
         'bootstrap' => true,
-        'routes' => true,
+        'routes' => !$isTest, // Skip routes in test environment
     ],
+    
+    // CLI-only plugins
     'Bake' => [
-        'onlyCli' => false,
+        'onlyCli' => true,
         'optional' => true,
     ],
-    'Migrations' => [],
-    'AdminTheme' => [
-        'bootstrap' => true,
-        'routes' => true,
-        'optional' => true,
+    'Migrations' => [
+        'onlyCli' => true,
     ],
-    'DefaultTheme' => [
-        'bootstrap' => true,
-        'routes' => true,
-        'optional' => true,
-    ],
-    'ADmad/I18n' => [
-        'bootstrap' => true,
-        'routes' => true,
-        'optional' => true,
-    ],
+    
+    // Core application plugins
+    'Josegonzalez/Upload' => [],
+    'AdminTheme' => [],
+    'DefaultTheme' => [],
+    'ADmad/I18n' => [],
+    
+    // Development-only plugins
     'DebugKit' => [
         'onlyDev' => true,
-        'optional' => true,
-    ],
-    'MysqlNativePassword' => [],
-    'Josegonzalez/Upload' => [],
-    'All' => [
-        'bootstrap' => true,
-        'routes' => true,
-        'optional' => true,
+        'optional' => true, // Won't break if missing in --no-dev installs
     ],
 ];
