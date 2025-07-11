@@ -429,3 +429,6 @@ docker/mysql/data/sys/sys_config.ibd
 tmp
 docker/mysql/data
 dump.rdb
+docker/jenkins
+webroot/coverage
+docker/willowcms/config/nginx/logs/error.log
