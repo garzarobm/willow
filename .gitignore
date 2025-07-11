@@ -430,5 +430,4 @@ tmp
 docker/mysql/data
 dump.rdb
 docker/jenkins
-webroot/coverage
 docker/willowcms/config/nginx/logs/error.log
