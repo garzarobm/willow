@@ -431,3 +431,4 @@ docker/mysql/data
 dump.rdb
 docker/jenkins
 docker/willowcms/config/nginx/logs/error.log
+logs
