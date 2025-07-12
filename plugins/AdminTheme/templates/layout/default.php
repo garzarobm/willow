@@ -2,6 +2,7 @@
 use App\Utility\SettingsManager;
 use Cake\Core\Configure;
 
+// Set active controller and action
 $session = $this->request->getSession();
 ?>
 <!doctype html>
@@ -76,6 +77,7 @@ $session = $this->request->getSession();
     </div>
     <?php endif; ?>
 
+
     <!-- Theme Toggle -->
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle" style="z-index: 1050;">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
@@ -143,7 +145,7 @@ $session = $this->request->getSession();
         </div>
       </div>
     </header>
-
+<!-- Start here!!! -->
     <!-- Main Layout Container -->
     <div class="admin-container">
       <!-- Sidebar Navigation (Desktop) -->
@@ -154,7 +156,10 @@ $session = $this->request->getSession();
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
               <h6 class="mb-1 text-muted sidebar-text"><?= __('Dashboard') ?></h6>
             </div>
-            
+
+           
+
+            <!-- Active Controller and Action - Analytics -->
             <?= $this->Html->link(
                 '<i class="fas fa-tachometer-alt sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Analytics') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'PageViews', 'action' => 'dashboard'],
@@ -172,6 +177,8 @@ $session = $this->request->getSession();
               <h6 class="mb-1 text-muted sidebar-text"><?= __('Content') ?></h6>
             </div>
 
+            <!-- replicate here once the sidebar is working -->
+            <!-- Active Controller and Action - Posts and Pages -->
             <?= $this->Html->link(
                 '<i class="fas fa-newspaper sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Posts') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Articles', 'action' => 'index'],
@@ -184,6 +191,8 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+
+            <!-- Active Controller and Action - Pages -->
             <?= $this->Html->link(
                 '<i class="fas fa-file-alt sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Pages') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Articles', 'action' => 'treeIndex'],
@@ -196,6 +205,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Tags -->
             <?= $this->Html->link(
                 '<i class="fas fa-tags sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Tags') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Tags', 'action' => $session->read('Tags.indexAction', 'treeIndex')],
@@ -208,6 +218,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Images -->
             <?= $this->Html->link(
                 '<i class="fas fa-images sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Images') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Images', 'action' => 'index'],
@@ -220,6 +231,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Images -->
             <?= $this->Html->link(
                 '<i class="fas fa-layer-group sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Image Galleries') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'ImageGalleries', 'action' => 'index'],
@@ -232,6 +244,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Comments -->
             <?php if(SettingsManager::read('Comments.pagesEnabled', false) || SettingsManager::read('Comments.articlesEnabled', false)) : ?>
             <?= $this->Html->link(
                 '<i class="fas fa-comments sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Comments') . '</span>',
@@ -246,6 +259,7 @@ $session = $this->request->getSession();
             ) ?>
             <?php endif; ?>
 
+            <!-- Active Controller and Action - manage users -->
             <!-- User Management -->
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
               <h6 class="mb-1 text-muted sidebar-text"><?= __('Users') ?></h6>
@@ -263,6 +277,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Settings -->
             <!-- Administration -->
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
               <h6 class="mb-1 text-muted sidebar-text"><?= __('Administration') ?></h6>
@@ -280,6 +295,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+                <!-- Active Controller and Action - Email Templates -->
             <?= $this->Html->link(
                 '<i class="fas fa-envelope sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Email Templates') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'EmailTemplates', 'action' => 'index'],
@@ -292,6 +308,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Slugs -->
             <?= $this->Html->link(
                 '<i class="fas fa-link sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Slugs') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Slugs', 'action' => 'index'],
@@ -304,6 +321,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - AI Prompts -->
             <?php if (Configure::read('debug')) : ?>
             <?= $this->Html->link(
                 '<i class="fas fa-robot sidebar-icon"></i><span class="sidebar-text ms-2">' . __('AI Prompts') . '</span>',
@@ -317,6 +335,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Internationalisations -->
             <?= $this->Html->link(
                 '<i class="fas fa-globe sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Internationalisation') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Internationalisations', 'action' => 'index'],
@@ -330,6 +349,7 @@ $session = $this->request->getSession();
             ) ?>
             <?php endif; ?>
 
+            <!-- Active Controller and Action - Clearing Cache -->
             <!-- System -->
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
               <h6 class="mb-1 text-muted sidebar-text"><?= __('System') ?></h6>
@@ -347,6 +367,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - Blocked IPs --> 
             <?= $this->Html->link(
                 '<i class="fas fa-ban sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Blocked IPs') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'BlockedIps', 'action' => 'index'],
@@ -359,6 +380,7 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
+            <!-- Active Controller and Action - System Logs -->
             <?= $this->Html->link(
                 '<i class="fas fa-file-text sidebar-icon"></i><span class="sidebar-text ms-2">' . __('System Logs') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'SystemLogs', 'action' => 'index'],
@@ -388,6 +410,7 @@ $session = $this->request->getSession();
               <h6 class="mb-1 text-muted"><?= __('Dashboard') ?></h6>
             </div>
             
+            <!-- Active Controller and Action - Analytics -->
             <?= $this->Html->link(
                 '<i class="fas fa-tachometer-alt me-2"></i>' . __('Analytics'),
                 ['prefix' => 'Admin', 'controller' => 'PageViews', 'action' => 'dashboard'],
