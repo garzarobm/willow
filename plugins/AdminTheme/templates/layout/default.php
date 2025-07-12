@@ -173,8 +173,28 @@ $session = $this->request->getSession();
             ) ?>
 
             <!-- Content Management -->
+             <!-- Products and Content -->
+           
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
-              <h6 class="mb-1 text-muted sidebar-text"><?= __('Content') ?></h6>
+              <h6 class="mb-1 text-muted sidebar-text"><?= __('Business Items') ?></h6>
+            </div>
+
+            <!-- replicate here once the sidebar is working -->
+            <!-- Active Controller and Action - Posts and Pages -->
+            <?= $this->Html->link(
+                '<i class="fas fa-newspaper sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Products') . '</span>',
+                ['prefix' => 'Admin', 'controller' => 'Products', 'action' => 'index'],
+                [
+                    'class' => 'list-group-item list-group-item-action border-0 sidebar-link' . (($activeCtl == 'Products' && $activeAct != 'treeIndex' && empty($this->request->getQuery('kind'))) ? ' active' : ''),
+                    'escape' => false,
+                    'title' => __('Products'),
+                    'data-bs-toggle' => 'tooltip',
+                    'data-bs-placement' => 'right'
+                ]
+            ) ?>
+
+            <div class="list-group-item list-group-item-action border-0 sidebar-header">
+              <h6 class="mb-1 text-muted sidebar-text"><?= __('Blog Content') ?></h6>
             </div>
 
             <!-- replicate here once the sidebar is working -->
