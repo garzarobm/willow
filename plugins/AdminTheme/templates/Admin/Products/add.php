@@ -34,7 +34,7 @@
 <?php if (!$product->isNew()): ?>
 <?php
     echo $this->element('actions_card', [
-        'modelName' => ($kind == 'page') ? 'Page' : 'Product',
+        'modelName' => ($kind == 'post') ? 'Page' : 'Product',
         'controllerName' => 'Products',
         'controllerIndexAction' => ($kind == 'page') ? 'tree-index' : 'index',
         'entity' => $product,
@@ -47,14 +47,13 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h5 class="card-title"><?= ($kind == 'page') ? __('Add Page') : __('Add Post') ?></h5>
+                    <h5 class="card-title"><?= ($kind == 'post') ? __('Add Product') : __('Add Post') ?></h5>
                 </div>
                 <div class="card-body">
                     <?= $this->Form->create($product,
                     [
                         'type' => 'file',
                         'enctype' => 'multipart/form-data',
-                        'class' => 'needs-validation', 'novalidate' => true
                     ]) ?>
                     <fieldset>
                         <?= $this->element('form/product', ['kind' => $kind]) ?>

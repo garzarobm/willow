@@ -91,6 +91,7 @@ return function (RouteBuilder $routes): void {
             ]
         );
 
+
         // Language-specific robots.txt route
         $builder->connect(
             '/{lang}/robots.txt',
@@ -137,6 +138,21 @@ return function (RouteBuilder $routes): void {
             ]
         );
 
+        // Language-specific routes for products, page
+        $builder->connect('/{lang}/products', ['controller' => 'Products', 'action' => 'index']);
+        $builder->connect(
+            '/{lang}/products',
+            [
+                'controller' => 'Products',
+                'action' => 'index'
+            ],
+            [
+                'routeClass' => 'ADmad/I18n.I18nRoute',
+                '_name' => 'products-index',
+                'lang' => '[a-z]{2}',
+                'pass' => ['lang']
+            ]
+        );
         $builder->connect(
             '/users/login',
             [

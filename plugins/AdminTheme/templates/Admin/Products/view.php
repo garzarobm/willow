@@ -6,12 +6,12 @@
 ?>
 <?php
     echo $this->element('actions_card', [
-        'modelName' => ($product->kind == 'page') ? 'Page' : 'Post',
+        'modelName' => ($product->kind == 'product') ? 'Product' : 'Product',
         'controllerName' => 'Products',
-        'controllerIndexAction' => ($product->kind == 'page') ? 'tree-index' : 'index',
+        'controllerIndexAction' => ($product->kind == 'product') ? 'tree-index' : 'index',
         'entity' => $product,
         'entityDisplayName' => $product->title,
-        'urlParams' => ($product->kind == 'page') ? ['kind' => 'page'] : [],
+        'urlParams' => ($product->kind == 'product') ? ['kind' => 'product'] : [],
     ]);
 ?>
 <div class="container mt-4">
@@ -38,7 +38,7 @@
                         <tr>
                             <th><?= __('Slug') ?></th>
                             <td>
-                                <?php $ruleName = ($product->kind == 'product') ? 'product-by-slug' : 'page-by-slug';?>
+                                <?php $ruleName = ($product->kind == 'product') ? 'product-by-slug' : 'product-by-slug';?>
                                 <?php if ($product->is_published == true): ?>
                                     
                                     <?= $this->Html->link(
@@ -101,8 +101,8 @@
                                 '<span class="badge bg-info me-3">' . __('{0} Views', $product->view_count) . '</span>',
                                 [
                                     'prefix' => 'Admin',
-                                    'controller' => 'PageViews',
-                                    'action' => 'pageViewStats',
+                                    'controller' => 'Products',
+                                    'action' => 'index',
                                     $product['id']
                                 ],
                                 [

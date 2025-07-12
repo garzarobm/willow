@@ -73,17 +73,17 @@
 <?php if ($kind == 'product') : ?>
 <div class="mb-3">
     <div class="me-3">
-        <?php echo $this->Form->label('tags._ids', __('Select Tags'), ['class' => 'form-label']); ?>
-        <?php echo $this->Form->select('tags._ids', $tags, [
+        <?php echo $this->Form->label('product_tags._ids', __('Select Tags'), ['class' => 'form-label']); ?>
+        <?php echo $this->Form->select('product_tags._ids', $tags, [
             'multiple' => true,
             'data-live-search' => 'true',
             'data-actions-box' => 'true',
             'id' => 'tags-select',
-            'class' => 'form-select' . ($this->Form->isFieldError('tags._ids') ? ' is-invalid' : '')
+            'class' => 'form-select' . ($this->Form->isFieldError('product_tags._ids') ? ' is-invalid' : '')
         ]); ?>
-        <?php if ($this->Form->isFieldError('tags._ids')): ?>
+        <?php if ($this->Form->isFieldError('product_tags._ids')): ?>
             <div class="invalid-feedback">
-                <?= $this->Form->error('tags._ids') ?>
+                <?= $this->Form->error('product_tags._ids') ?>
             </div>
         <?php endif; ?>
     </div>
@@ -91,11 +91,12 @@
 <?php endif; ?>
 <div class="mb-3">
     <?php if ($product->tags && SettingsManager::read('AI.enabled') && SettingsManager::read('AI.productTags')): ?>
-        <?php if ($kind == 'product') : ?>
+        <?php if ($kind == 'article') : ?>
         <div class="form-check d-flex align-items-center">
             <?= $this->Form->checkbox("regenerateTags", [
                 'checked' => false,
-                'class' => 'form-check-input' . ($this->Form->isFieldError('regenerateTags') ? ' is-invalid' : '')
+                'class' => 'form-check-input' . ($this->Form->isFieldError('regenerateTags') ? ' is-invalid' : 'product-tags'),
+                'id' => 'regenerate-tags'
             ]) ?>
             <label class="form-check-label ms-2" for="regenerate-tags">
                 <?= __('Auto Tag') ?>

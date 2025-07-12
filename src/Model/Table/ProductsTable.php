@@ -67,6 +67,12 @@ class ProductsTable extends Table
             'targetForeignKey' => 'tag_id',
             'joinTable' => 'products_tags',
         ]);
+
+        $this->hasMany('PageViews', [
+            'foreignKey' => 'product_id',
+            'dependent' => true,
+            'cascadeCallbacks' => true,
+        ]);
     }
 
     /**
