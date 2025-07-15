@@ -14,6 +14,26 @@ class InitialContactManager extends BaseMigration
      */
     public function up(): void
     {
+        // Create the contacts table with the necessary fields 
+        /* list of fields:
+         * - id: UUID, primary key
+         * - first_name: string, not null
+         * - last_name: string, not null
+         * - email: string, not null
+         * - contact_num: string, not null
+         * - address: text, not null
+         * - city: string, not null
+         * - state: string, not null
+         * - country: string, not null
+         * - created: timestamp, not null
+         * - modified: timestamp, not null
+         */
+        $this->createContactsTable();
+        
+    }
+
+    protected function createContactsTable(): void
+    {
         $this->table('contacts', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'uuid', [
                 'default' => null,
