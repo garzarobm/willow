@@ -244,11 +244,5 @@ volumes:
       type: none
       device: ./docker/mysql/sql-scripts
       o: bind
-# template for mailpit volume
-# mailpit_data:
-#   driver: local
-#   driver_opts:
-#     type: none # none is equivalent to 'local' in this context
-#     device: ./docker/mailpit/data
-#     o: bind
+
 
