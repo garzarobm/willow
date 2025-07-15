@@ -62,3 +62,4 @@ plugins/ContactManager/config/Migrations/schema-dump-default.lock
 config/Migrations/schema-dump-default.lock
 .gitignore
 config/Migrations/schema-dump-test.lock
+plugins/ContactManager/templates/Articles
