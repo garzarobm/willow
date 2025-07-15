@@ -50,7 +50,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "Mozex\\": "vendor/mozex/anthropic-php/src/"
+            "Mozex\\": "vendor/mozex/anthropic-php/src/",
+            "ContactManager\\": "plugins/ContactManager/src/"
         }
     },
     "autoload-dev": {

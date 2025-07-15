@@ -1,23 +1,56 @@
 <?php
+declare(strict_types=1);
 namespace ContactManager\Test\TestCase\Controller;
 
 use ContactManager\Controller\ContactsController;
 use Cake\TestSuite\TestCase;
+use Cake\TestSuite\IntegrationTestTrait;
 
 /**
  * ContactManager\Controller\ContactsController Test Case
+ *  @uses \ContactManager\Controller\ContactsController
  */
 class ContactsControllerTest extends TestCase
 {
+    use IntegrationTestTrait;
 
     /**
      * Fixtures
      *
-     * @var array
+     * @var list<string>
      */
-    public $fixtures = [
-        'Contacts' => 'plugin.contact_manager.contacts'
+    protected array $fixtures = [
+        'app.Articles',
+        'app.Comments',
+        'app.Slugs',
+        'app.Images',
+        'app.ArticlesTranslations',
+        'app.Users',
+        'app.Tags',
+        'app.PageViews',
+        'app.ModelsImages',
+        'app.ArticlesTags'
     ];
+
+    // /**
+    //  * Fixtures
+    //  *
+    //  * @var array
+    //  */
+    // protected array $fixtures = [
+    //     'plugin.ContactManager.Contacts',
+    //     'plugin.ContactManager.Users',
+    //     'plugin.ContactManager.Groups',
+    //     'plugin.ContactManager.ContactsGroups',
+    //     'plugin.ContactManager.ContactsTranslations',
+    //     'plugin.ContactManager.ContactsImages',
+    //     'plugin.ContactManager.ContactsTags',
+    //     'plugin.ContactManager.Tags',
+    //     'plugin.ContactManager.PageViews',
+    //     'plugin.ContactManager.ModelsImages',
+    //     'plugin.ContactManager.Slugs',
+    //     'plugin.ContactManager.Comments',
+    // ];
 
     /**
      * Test index method
