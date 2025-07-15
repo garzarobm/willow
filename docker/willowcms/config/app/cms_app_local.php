@@ -55,7 +55,7 @@ return [
         'test' => [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
+            'persistent' => true,
             'host' => env('TEST_DB_HOST', 'mysql'),
             'username' => env('TEST_DB_USERNAME', 'cms_user_test'),
             'password' => env('TEST_DB_PASSWORD', 'password'),
