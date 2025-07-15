@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace ContactManager\Test\TestCase\Controller;
+namespace App\Test\TestCase\Controller;
 
+use App\Controller\ContactsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
-use ContactManager\Controller\ContactsController;
 
 /**
- * ContactManager\Controller\ContactsController Test Case
+ * App\Controller\ContactsController Test Case
  *
- * @link \ContactManager\Controller\ContactsController
+ * @link \App\Controller\ContactsController
  */
 class ContactsControllerTest extends TestCase
 {
@@ -22,14 +22,14 @@ class ContactsControllerTest extends TestCase
      * @var list<string>
      */
     protected array $fixtures = [
-        'ContactManager.Contacts',
+        'app.Contacts',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @link \ContactManager\Controller\ContactsController::index()
+     * @link \App\Controller\ContactsController::index()
      */
     public function testIndex(): void
     {
@@ -40,7 +40,7 @@ class ContactsControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @link \ContactManager\Controller\ContactsController::view()
+     * @link \App\Controller\ContactsController::view()
      */
     public function testView(): void
     {
@@ -51,7 +51,7 @@ class ContactsControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @link \ContactManager\Controller\ContactsController::add()
+     * @link \App\Controller\ContactsController::add()
      */
     public function testAdd(): void
     {
@@ -62,7 +62,7 @@ class ContactsControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @link \ContactManager\Controller\ContactsController::edit()
+     * @link \App\Controller\ContactsController::edit()
      */
     public function testEdit(): void
     {
@@ -73,7 +73,7 @@ class ContactsControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @link \ContactManager\Controller\ContactsController::delete()
+     * @link \App\Controller\ContactsController::delete()
      */
     public function testDelete(): void
     {

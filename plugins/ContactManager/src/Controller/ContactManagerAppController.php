@@ -7,20 +7,12 @@ use App\Controller\AppController;
 
 class ContactManagerAppController extends AppController
 {
-// ORDER of functions is important here, as initialize() must be called before beforeFilter() to ensure components are loaded.
-// The beforeRender() method is called after beforeFilter() and before the view is rendered.
-// The beforeFilter() method is called before the controller action is executed.
-// The initialize() method is called before any other methods in the controller.
     /**
-     * Default configuration.
+     * Initialize method
      *
-     * Defines the events this component listens to.
-     *
-     * @var array
+     * This method is called before the controller action is executed.
+     * It can be used to set up common functionality for all controllers in the ContactManager plugin.
      */
-    protected array $_defaultConfig = [
-        'implementedEvents' => [
-            'Controller.beforeRender' => 'beforeRender'
-        ]
+ 
 
 }

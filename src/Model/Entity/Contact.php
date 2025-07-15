@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ContactManager\Model\Entity;
+namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
@@ -19,8 +19,6 @@ use Cake\ORM\Entity;
  * @property string $country
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime|null $modified
- *
- * @property \ContactManager\Model\Entity\Contact[] $contacts
  */
 class Contact extends Entity
 {
@@ -34,7 +32,6 @@ class Contact extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'id' => true,
         'first_name' => true,
         'last_name' => true,
         'email' => true,
@@ -45,8 +42,5 @@ class Contact extends Entity
         'country' => true,
         'created' => true,
         'modified' => true,
-        'contacts' => true,
     ];
-
-    
 }

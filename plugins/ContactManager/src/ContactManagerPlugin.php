@@ -55,7 +55,11 @@ class ContactManagerPlugin extends BasePlugin
      */
     public function routes(RouteBuilder $routes): void
     {
-        // Add routes.
+       
+        // Add routes for the plugin.
+        // This will connect the /contact-manager/controller/action URLs to the appropriate controller and action.
+        // You can add more specific routes as needed.
+        // For example, you can add routes for creating, deleting, or listing contacts
         // By default will load `config/routes.php` in the plugin.
         parent::routes($routes); 
     }
@@ -70,5 +74,8 @@ class ContactManagerPlugin extends BasePlugin
     public function services(ContainerInterface $container): void
     {
         // Add your services here
+        // For example, you can register a service like this:
+        // $container->add('MyService', MyService::class);
+        parent::services($container);
     }
 }

@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace ContactManager\Test\TestCase\Model\Table;
+namespace App\Test\TestCase\Model\Table;
 
+use App\Model\Table\ContactsTable;
 use Cake\TestSuite\TestCase;
-use ContactManager\Model\Table\ContactsTable;
 
 /**
- * ContactManager\Model\Table\ContactsTable Test Case
+ * App\Model\Table\ContactsTable Test Case
  */
 class ContactsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \ContactManager\Model\Table\ContactsTable
+     * @var \App\Model\Table\ContactsTable
      */
     protected $Contacts;
 
@@ -24,7 +24,7 @@ class ContactsTableTest extends TestCase
      * @var list<string>
      */
     protected array $fixtures = [
-        'plugin.ContactManager.Contacts',
+        'app.Contacts',
     ];
 
     /**
@@ -55,31 +55,9 @@ class ContactsTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @link \ContactManager\Model\Table\ContactsTable::validationDefault()
+     * @link \App\Model\Table\ContactsTable::validationDefault()
      */
     public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     * @link \ContactManager\Model\Table\ContactsTable::buildRules()
-     */
-    public function testBuildRules(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test tryme method
-     *
-     * @return void
-     * @link \ContactManager\Model\Table\ContactsTable::tryme()
-     */
-    public function testTryme(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

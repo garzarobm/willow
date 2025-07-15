@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ContactManager\Test\Fixture;
+namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
 
@@ -19,7 +19,7 @@ class ContactsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '8e8301e9-7779-4e68-9b17-067c2c850627',
+                'id' => '93dbbe7d-4853-4a54-88bf-7624fe8b4d61',
                 'first_name' => 'Lorem ipsum dolor sit amet',
                 'last_name' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
@@ -28,8 +28,8 @@ class ContactsFixture extends TestFixture
                 'city' => 'Lorem ipsum dolor sit amet',
                 'state' => 'Lorem ipsum dolor sit amet',
                 'country' => 'Lorem ipsum dolor sit amet',
-                'created' => 1752579972,
-                'modified' => 1752579972,
+                'created' => 1752579873,
+                'modified' => 1752579873,
             ],
         ];
         parent::init();

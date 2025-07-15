@@ -39,15 +39,6 @@ class DefaultThemePlugin extends BasePlugin
      */
     public function routes(RouteBuilder $routes): void
     {
-        $routes->plugin(
-            'DefaultTheme',
-            ['path' => '/default-theme'],
-            function (RouteBuilder $builder) {
-                // Add custom routes here
-                $builder->connect('/check', ['controller' => 'FrontEndSite', 'action' => 'index']);
-                $builder->fallbacks(); // This will connect the default routes for the plugin
-            }
-        );
         parent::routes($routes);
     }
 
