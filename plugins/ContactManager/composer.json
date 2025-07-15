@@ -17,9 +17,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ContactManager\\Test\\": "./tests/",
-            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests/",
-            "ContactManager\\Test\\Fixture": "./tests/Fixture/"
+            "ContactManager\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/",
+            "ContactManager\\Test\\Fixture": "tests/Fixture/"
         }
     }
 }

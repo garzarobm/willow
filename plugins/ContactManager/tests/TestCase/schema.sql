@@ -1,0 +1,2 @@
+-- Test database schema for ContactManager plugin
+-- This file is used to set up the database schema for the ContactManager plugin tests.
