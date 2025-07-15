@@ -58,3 +58,7 @@ dump.rdb.zip
 ./plugins/ContactManager/config/Migrations/schema-dump-default.lock
 ./config/Migrations/*.lock
 ./config/Migrations/*.lock
+plugins/ContactManager/config/Migrations/schema-dump-default.lock
+config/Migrations/schema-dump-default.lock
+.gitignore
+config/Migrations/schema-dump-test.lock
