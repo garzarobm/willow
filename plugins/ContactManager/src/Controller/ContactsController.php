@@ -1,14 +1,27 @@
 <?php
 declare(strict_types=1);
-
 namespace ContactManager\Controller;
 
+use App\Controller\AppController as BaseController;
+use Cake\ORM\Locator\LocatorAwareTrait;
+use ContactManager\Model\Table\ContactsTable;
 
-use ContactManager\Controller\ContactManagerAppController;
+// change the BaseController to a different controller if need a different base functionality  or need to seperate the ContactManager plugin from the main application controller.
 
-class ContactsController extends ContactManagerAppController
+/**
+ * ContactsController
+ * This controller handles the CRUD operations for the Contacts model.
+ * It extends the BaseController which is the main controller for the ContactManager plugin.
+ * @property \ContactManager\Model\Table\ContactsTable $Contacts
+ */
+class ContactsController extends BaseController
 {
-    public $uses = ['ContactManager.Contacts'];
+    // This controller handles the CRUD operations for the Contacts model.
+    // It extends the BaseController which is the main controller for the ContactManager plugin.
+
+    public $contacts = $this->fetchTable('ContactManager.Contacts');
+    // The Contacts model is used in this controller to interact with the database.
+
     /**
      * Index method
      *
@@ -16,131 +29,142 @@ class ContactsController extends ContactManagerAppController
      */
     public function index()
     {
-
         // Fetching all contacts from the Contacts model and paginating them
-        
-        $query = $this->Contacts->find('all', [
-            'contain' => []
-        ]);
 
-        $contacts = $this->paginate($query);
-        // This method is used to list all contacts in the Contacts model.
-        $this->paginate = [
-            'contain' => []
-        ];
-        // Fetching all contacts from the Contacts model and paginating them
+        $contacts_list = $this->paginate($this->Contacts->find('all', [
+            ]
+        ));
+        // plugins/ContactManager/templates/Contacts/index.php:
+        echo $this->Html->tag('h1', 'Contacts');
+        echo $this->Html->tag('p', 'Following is a sortable list of your contacts');
+        echo $this->element('contacts_table', ['contacts' => $contacts_list]);
+
+        // $this->loadComponent('Paginator');
+        // $contacts_list = $this->Paginator->paginate(
+        //     $this->Contacts->find('all', [
+        //         'contain' => [
+        //             'Users',
+        //             'ContactsTranslations',
+        //             'ContactsImages',
+        //             'ContactsTags',
+        //             'Tags',
+        //             'PageViews',
+        //             'ModelsImages',
+        //             'Slugs',
+        //             'Comments'
+        //         ]
+        //     ])
+    
         // The paginate method will automatically handle the pagination logic
-        $this->set(compact('contacts'));
+        $this->set(compact('contacts_list'));
         // Setting the 'contacts' variable to be used in the view
     }
 
     /**
-     * View method
+     * Before render callback.
      *
-     * @param string|null $id Contact id.
+     * This method is automatically called before the view is rendered
+     * using the DefaultTheme. It prepares and sets data
+     * for use in the views.
+     *
+     * @param \Cake\Event\EventInterface $event The beforeRender event that was fired.
      * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function view($id = null)
+    public function beforeRender(EventInterface $event): void
     {
-       $query = $this->Contacts->find('all', [
-            'contain' => []
-        ]);
+        $controller = $this->getController(); // Get the controller instance
 
-                    // Fetching a single contact by its ID and setting it to the 'contact' variable
-        $this->set(compact('contact'));
-        // Setting the 'contact' variable to be used in the view
-        $this->set('_serialize', ['contact']);
-    }
+
+// A request object from the controller encapsulates the details of the current HTTP request that the client sends to the server.
+// It provides methods to access various aspects of the request, such as parameters, headers, and the request method.
+// This allows the component to access the Articles and Tags models and to set the necessary data for the front-end site.
+        $request = $controller->getRequest(); // Ensure the controller is set and has a request object
 
 
 
-    /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        /*$contact = $this->Contacts->newEntity(); 
-        if ($this->request->is('post')) {
-            $contact = $this->Contacts->patchEntity($contact, $this->request->data);
-            pr($contact); exit;
-            if ($this->Contacts->save($contact)) {
-                $this->Flash->success('The contact has been saved.');
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error('The contact could not be saved. Please, try again.');
+        // Skip processing for admin routes
+        if ($request->getParam('prefix') === 'Admin') {
+            return;
+        }
+        
+        // Skip processing for certain user actions during tests
+        if (Configure::read('debug') && $request->getParam('controller') === 'ContactManager') { // Check if the controller is ContactManager
+            // Skip certain actions that do not require front-end data
+            $skipActions = ['login', 'logout', 'register', 'edit', 'forgotPassword', 'resetPassword', 'confirmEmail'];
+            if (in_array($request->getParam('action'), $skipActions)) {
+                // Set minimal required variables
+                $controller->set([
+                    'menuPages' => [],
+                    'rootTags' => [],
+                    'ContactManager.Contacts' => [],
+                    'articleArchives' => [],
+                    'siteLanguages' => I18nManager::getEnabledLanguages(),
+                    'selectedSiteLanguage' => $request->getParam('lang', 'en')
+                ]);
+                return;
             }
         }
-        $this->set(compact('contact'));
-        $this->set('_serialize', ['contact']);*/
 
-        $contact = new ContactForm();
-        $contactObj = $this->Contacts->newEntity();
+        $cacheKey = $controller->cacheKey; // Use the cache key from the controller to ensure consistent caching
+        $articlesTable = $controller->fetchTable('Articles'); // Fetch the Articles table from the controller
+        $tagsTable = $controller->fetchTable('Tags'); // Fetch the Tags table from the controller
+        $menuPages = []; // Initialize menu pages
 
-        if ($this->request->is('post')) {
-            if ($contact->execute($this->request->data)) {  
-                $contactObj = $this->Contacts->patchEntity($contactObj, $this->request->data); 
-                if($this->Contacts->save($contactObj)){
-                    $this->Flash->success('We will get back to you soon.');
-                }
-                else{   
-                    //$isValid = $contact->validate($this->request->data); pr($isValid);
-                   // pr($contact->_$errors);
-                    $this->Flash->error('User with given email registered previously.');
-                }
-               
-            } else {
-                $this->Flash->error('There was a problem submitting your form.');
+
+        switch(SettingsManager::read('SitePages.mainMenuShow', 'root')) {
+            case "root":
+                $menuPages = $articlesTable->getRootPages($cacheKey);
+                break;
+            case "selected":
+                $menuPages = $articlesTable->getMainMenuPages($cacheKey);
+                break;
+        }
+
+        $rootTags = [];
+        switch(SettingsManager::read('SitePages.mainTagMenuShow', 'root')) {
+            case "root":
+                $rootTags = $tagsTable->getRootTags($cacheKey);
+                break;
+            case "selected":
+                $rootTags = $tagsTable->getMainMenuTags($cacheKey);
+                break;
+        }
+
+        $featuredArticles = $articlesTable->getFeatured($cacheKey);
+        $articleArchives = $articlesTable->getArchiveDates($cacheKey);
+
+        // Set the site privacy policy if configured
+        // This function looks for an article that has been configured previously as the privacy policy by a site admin
+        // and sets it to the view variable 'sitePrivacyPolicy' if found.
+        // If no privacy policy is set, this will not set the variable.
+        $privacyPolicyId = SettingsManager::read('SitePages.privacyPolicy', null);
+        if ($privacyPolicyId && $privacyPolicyId != 'None') {
+            $privacyPolicy = $articlesTable->find()
+                ->select(['id', 'title', 'slug'])
+                ->where(['id' => $privacyPolicyId])
+                ->cache($cacheKey . 'priv_page', 'content')
+                ->first();
+                
+            if ($privacyPolicy) {
+                $controller->set('sitePrivacyPolicy', $privacyPolicy->toArray());
             }
         }
-        $this->set('contact', $contact);
-    }
+        
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Contact id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $contact = $this->Contacts->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $contact = $this->Contacts->patchEntity($contact, $this->request->data);
-            if ($this->Contacts->save($contact)) {
-                $this->Flash->success('The contact has been saved.');
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error('The contact could not be saved. Please, try again.');
-            }
-        }
-        $this->set(compact('contact'));
-        $this->set('_serialize', ['contact']);
+        //////////////////////////////////// SET  functions for the templates, accessible in the views without the need to pass them explicitly to the controller ////////////////////
+        // Set the view variables for the front-end site
+        // These variables will be available in the DefaultTheme views
+        // and can be used to render the menu, tags, featured articles, and archives.
+        $controller->set(compact(
+            'menuPages',
+            'rootTags',
+            'featuredArticles',
+            'articleArchives',
+        ));
+        // Set the site languages and selected language
+        // This will be used to render the language switcher in the front-end.
+        // The selected language is determined by the 'lang' parameter in the request,
+        $controller->set('siteLanguages', I18nManager::getEnabledLanguages());
+        $controller->set('selectedSiteLanguage', $request->getParam('lang', 'en'));
     }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Contact id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $contact = $this->Contacts->get($id);
-        if ($this->Contacts->delete($contact)) {
-            $this->Flash->success('The contact has been deleted.');
-        } else {
-            $this->Flash->error('The contact could not be deleted. Please, try again.');
-        }
-        return $this->redirect(['action' => 'index']);
-    }
-
-    
 }

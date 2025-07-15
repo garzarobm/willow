@@ -20,16 +20,16 @@ class ContactsControllerTest extends TestCase
      * @var list<string>
      */
     protected array $fixtures = [
-        'app.Articles',
-        'app.Comments',
-        'app.Slugs',
-        'app.Images',
-        'app.ArticlesTranslations',
-        'app.Users',
-        'app.Tags',
-        'app.PageViews',
-        'app.ModelsImages',
-        'app.ArticlesTags'
+        'ContactManager.Articles',
+        'ContactManager.Comments',
+        'ContactManager.Slugs',
+        'ContactManager.Images',
+        'ContactManager.ArticlesTranslations',
+        'ContactManager.Users',
+        'ContactManager.Tags',
+        'ContactManager.PageViews',
+        'ContactManager.ModelsImages',
+        'ContactManager.ArticlesTags'
     ];
 
     // /**
