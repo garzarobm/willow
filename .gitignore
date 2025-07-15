@@ -56,3 +56,5 @@ config/.env.example
 dump.rdb.zip
 ./plugins/ContactManager/templates/Articles
 ./plugins/ContactManager/config/Migrations/schema-dump-default.lock
+./config/Migrations/*.lock
+./config/Migrations/*.lock
