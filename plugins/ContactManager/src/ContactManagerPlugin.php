@@ -1,93 +1,63 @@
 <?php
+/**
+ * ContactManagerPlugin.php
+ * This file is part of the ContactManager plugin for WillowCMS.
+ * It defines the plugin class and its methods for handling middleware, console commands, routes, and services.
+ */
 declare(strict_types=1);
+
 
 namespace ContactManager;
 
-use Cake\Console\CommandCollection;
 use Cake\Core\BasePlugin;
 use Cake\Core\ContainerInterface;
 use Cake\Core\PluginApplicationInterface;
+use Cake\Console\CommandCollection;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
 
-/**
- * Plugin for ContactManager
- */
 class ContactManagerPlugin extends BasePlugin
 {
     /**
-     * Load all the plugin configuration and bootstrap logic.
-     *
-     * The host application is provided as an argument. This allows you to load
-     * additional plugin dependencies, or attach events.
-     *
-     * @param \Cake\Core\PluginApplicationInterface $app The host application
-     * @return void
+     * @inheritDoc
      */
-    public function bootstrap(PluginApplicationInterface $app): void
+    public function middleware(MiddlewareQueue $middleware): MiddlewareQueue
     {
-        // remove this method hook if you don't need it
+        // Add middleware here.
+        $middleware = parent::middleware($middleware);
+
+        return $middleware;
     }
 
     /**
-     * Add routes for the plugin.
-     *
-     * If your plugin has many routes and you would like to isolate them into a separate file,
-     * you can create `$plugin/config/routes.php` and delete this method.
-     *
-     * @param \Cake\Routing\RouteBuilder $routes The route builder to update.
-     * @return void
-     */
-    public function routes(RouteBuilder $routes): void
-    {
-        // // Load the plugin's routes file
-        // // remove this method hook if you don't need it
-        // $routes->plugin(
-        //     'ContactManager',
-        //     ['path' => '/contact-manager'],
-        //     function (RouteBuilder $builder) {
-        //         // Add custom routes here
-
-        //         $builder->fallbacks();
-        //     }
-        // );
-        parent::routes($routes);
-        // This will connect the /contact-manager/controller/action URLs to the appropriate controller and action.
-        // You can also add custom routes here if needed.
-        $routes->plugin('ContactManager', function (RouteBuilder $builder) {
-            // Connect the default routes for all controllers in the ContactManager plugin.
-            $builder->fallbacks();
-        });
-    }
-
-    /**
-     * Add middleware for the plugin.
-     *
-     * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to update.
-     * @return \Cake\Http\MiddlewareQueue
-     */
-    public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
-    {
-        // Add your middlewares here
-        // remove this method hook if you don't need it
-
-        return $middlewareQueue;
-    }
-
-    /**
-     * Add commands for the plugin.
-     *
-     * @param \Cake\Console\CommandCollection $commands The command collection to update.
-     * @return \Cake\Console\CommandCollection
+     * @inheritDoc
      */
     public function console(CommandCollection $commands): CommandCollection
     {
-        // Add your commands here
-        // remove this method hook if you don't need it
-
+        // Add console commands here.
         $commands = parent::console($commands);
 
         return $commands;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function bootstrap(PluginApplicationInterface $app): void
+    {
+        // Add constants, load configuration defaults.
+        // By default will load `config/bootstrap.php` in the plugin.
+        parent::bootstrap($app);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function routes(RouteBuilder $routes): void
+    {
+        // Add routes.
+        // By default will load `config/routes.php` in the plugin.
+        parent::routes($routes); 
     }
 
     /**
@@ -100,6 +70,5 @@ class ContactManagerPlugin extends BasePlugin
     public function services(ContainerInterface $container): void
     {
         // Add your services here
-        // remove this method hook if you don't need it
     }
 }
