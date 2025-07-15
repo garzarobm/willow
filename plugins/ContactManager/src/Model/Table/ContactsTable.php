@@ -28,9 +28,24 @@ class ContactsTable extends Table
      */
     public function initialize(array $config): void
     {
-        parent::initialize($config);
+        parent::initialize($config); // Call the parent initialize method
         // Set the table name for this model
         $this->setTable('contacts');
+        // Set the display field for this model
+        $this->setDisplayField('first_name');
+        // Set the primary key for this model
+        $this->setPrimaryKey('id');
+        $this->hasMany('Contacts', [
+            'className' => 'ContactManager.Contacts',
+        ]);
+        // Define associations with other models if needed
+        // For example, if Contacts belongs to Users, you can define it like this:
+        // $this->belongsTo('Users', [
+        //     'className' => 'ContactManager.Users',
+        //     'foreignKey' => 'user_id',
+        //     'joinType' => 'INNER',
+        // ]);}
+        // You can also define other associations like hasMany, belongsToMany, etc.
     }
 
     /**

@@ -17,9 +17,17 @@ class ContactsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'Contacts' => 'plugin.contact_manager.contacts'
+        'plugin.ContactManager.Contacts',
+        'plugin.ContactManager.Notes',
+        'plugin.ContactManager.Users'
     ];
 
+    /**
+     * Contacts Table instance
+     *
+     * @var \ContactManager\Model\Table\ContactsTable
+     */
+    protected $Contacts;
     /**
      * setUp method
      *
