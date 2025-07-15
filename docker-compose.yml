@@ -110,6 +110,24 @@ services:
     depends_on:
       - mysql
 
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "1125:1025"
+      - "8025:8025"
+    volumes:
+      - mailpit_data:/data
+      # - ./docker/mailpit_data:/data
+      - ./docker/mailpit/mailpit.db:/data/mailpit.db
+    depends_on:
+      - willowcms
+    environment:
+      - MP_MAX_MESSAGES=5000
+      - MP_DATABASE=/data/mailpit.db
+      - MP_SMTP_AUTH_ACCEPT_ANY=1
+      - MP_SMTP_AUTH_ALLOW_INSECURE=1
+      
   redis-commander:
     image: rediscommander/redis-commander:latest
     environment:
@@ -123,10 +141,6 @@ services:
     depends_on:
       - willowcms
 
-
-#region Comments
-# This is a comment block
-# Another comment line
 
 ######## region CONTINUOUS INTEGRATION SERVICES - These services are used for development purposes only. ########
 # These services are used for development purposes only.
@@ -168,22 +182,8 @@ services:
 #     - RABBITMQ_DEFAULT_PASS=guest
 # # The following service is for Jenkins, a popular automation server.
 # # It is used for continuous integration and continuous deployment (CI/CD).
-# mailpit:
-#   image: axllent/mailpit:latest
-#   ports:
-#     - "1125:1025"
-#     - "8025:8025"
-#   volumes:
-#     - mailpit_data:/data
-#     # - ./docker/mailpit_data:/data
-#     - ./docker/mailpit/mailpit.db:/data/mailpit.db
-#   depends_on:
-#     - willowcms
-#   environment:
-#     - MP_MAX_MESSAGES=5000
-#     - MP_DATABASE=/data/mailpit.db
-#     - MP_SMTP_AUTH_ACCEPT_ANY=1
-#     - MP_SMTP_AUTH_ALLOW_INSECURE=1
+
+
 #endregion CONTINUOUS INTEGRATION SERVICES - These services are used for development purposes only.
 
 
@@ -244,7 +244,6 @@ volumes:
       type: none
       device: ./docker/mysql/sql-scripts
       o: bind
-# template for mailpit volume
 # mailpit_data:
 #   driver: local
 #   driver_opts:
