@@ -11,6 +11,23 @@ use Cake\Event\EventInterface;
 use Cake\Log\LogTrait;
 // No explicit `use Cake\Http\Response;` needed just for redirecting in beforeFilter
 
+
+/**
+ * AppController
+ *
+ * This is the base controller for the application.
+ * It extends the CakePHP Controller class and provides common functionality
+ * for all controllers in the application.
+ */
+// The initialize() method is called before any other methods in the controller.
+// 1st (relative): initialize() method is called before any other methods in the controller
+// 2nd (relative): beforeFilter() method is called before the controller action is executed.
+// 3rd (relative): beforeRender() method is called after beforeFilter() and before the view is rendered.
+// The beforeFilter() method is called before the controller action is executed.
+
+// The beforeRender() method is called after beforeFilter() and before the view is rendered.
+
+
 class AppController extends Controller
 {
     use LogTrait;
