@@ -1,64 +1,9 @@
 <?php
-
-/* Current routes 
-*+-------------------------------------+----------------------------------------------------+--------------+--------+----------------+-------------------+-----------+
-| Route name                          | URI template                                       | Plugin       | Prefix | Controller     | Action            | Method(s) |
-+-------------------------------------+----------------------------------------------------+--------------+--------+----------------+-------------------+-----------+
-| sitemap-root                        | /sitemap                                           |              |        | Sitemap        | index             |           |
-| robots-root                         | /robots.txt                                        |              |        | Robots         | index             |           |
-| defaulttheme._controller:index      | /default-theme/{controller}                        | DefaultTheme |        |                | index             |           |
-| defaulttheme._controller:_action    | /default-theme/{controller}/{action}/*             | DefaultTheme |        |                | index             |           |
-| debugkit.toolbar:clearcache         | /debug-kit/toolbar/clear-cache                     | DebugKit     |        | Toolbar        | clearCache        |           |
-| debugkit.requests:view              | /debug-kit/toolbar/*                               | DebugKit     |        | Requests       | view              |           |
-| debugkit.panels:latesthistory       | /debug-kit/panels/view/latest-history              | DebugKit     |        | Panels         | latestHistory     |           |
-| debugkit.panels:view                | /debug-kit/panels/view/*                           | DebugKit     |        | Panels         | view              |           |
-| debugkit.panels:index               | /debug-kit/panels/*                                | DebugKit     |        | Panels         | index             |           |
-| debugkit.mailpreview:sent           | /debug-kit/mail-preview/sent/{panel}/{id}          | DebugKit     |        | MailPreview    | sent              |           |
-| debugkit.mailpreview:email          | /debug-kit/mail-preview/preview                    | DebugKit     |        | MailPreview    | email             |           |
-| debugkit.mailpreview:email          | /debug-kit/mail-preview/preview/*                  | DebugKit     |        | MailPreview    | email             |           |
-| debugkit.mailpreview:index          | /debug-kit/mail-preview                            | DebugKit     |        | MailPreview    | index             |           |
-| debugkit.dashboard:reset            | /debug-kit/dashboard/reset                         | DebugKit     |        | Dashboard      | reset             | POST      |
-| debugkit.dashboard:index            | /debug-kit/dashboard                               | DebugKit     |        | Dashboard      | index             | GET       |
-| debugkit.composer:checkdependencies | /debug-kit/composer/check-dependencies             | DebugKit     |        | Composer       | checkDependencies |           |
-| debugkit._controller:index          | /debug-kit/{controller}                            | DebugKit     |        |                | index             |           |
-| debugkit._controller:_action        | /debug-kit/{controller}/{action}/*                 | DebugKit     |        |                | index             |           |
-| debugkit.dashboard:index            | /debug-kit                                         | DebugKit     |        | Dashboard      | index             | GET       |
-| admin:imagegalleries:removeimage    | /admin/image-galleries/remove-image/{id}/{imageId} |              | Admin  | ImageGalleries | removeImage       |           |
-| admin:_controller:index             | /admin/{controller}                                |              | Admin  |                | index             |           |
-| admin:_controller:_action           | /admin/{controller}/{action}/*                     |              | Admin  |                | index             |           |
-| admintheme._controller:index        | /admin-theme/{controller}                          | AdminTheme   |        |                | index             |           |
-| admintheme._controller:_action      | /admin-theme/{controller}/{action}/*               | AdminTheme   |        |                | index             |           |
-| admin:articles:index                | /admin                                             |              | Admin  | Articles       | index             |           |
-| articles:index                      | /                                                  |              |        | Articles       | index             |           |
-| home                                | /{lang}                                            |              |        | Articles       | index             |           |
-| robots                              | /{lang}/robots.txt                                 |              |        | Robots         | index             |           |
-| sitemap                             | /{lang}/sitemap                                    |              |        | Sitemap        | index             |           |
-| rss                                 | /{lang}/feed                                       |              |        | Rss            | index             |           |
-| products:index                      | /{lang}/products                                   |              |        | Products       | index             |           |
-| products-index                      | /{lang}/products                                   |              |        | Products       | index             |           |
-| login                               | /{lang}/users/login                                |              |        | Users          | login             |           |
-| users:register                      | /{lang}/users/register                             |              |        | Users          | register          |           |
-| forgot-password                     | /{lang}/users/forgot-password                      |              |        | Users          | forgot-password   |           |
-| reset-password                      | /{lang}/users/reset-password/{confirmationCode}    |              |        | Users          | reset-password    |           |
-| logout                              | /{lang}/users/logout                               |              |        | Users          | logout            |           |
-| confirm-email                       | /{lang}/users/confirm-email/{confirmationCode}     |              |        | Users          | confirmEmail      |           |
-| account                             | /{lang}/users/edit/{id}                            |              |        | Users          | edit              |           |
-| articles:addcomment                 | /{lang}/articles/add-comment/*                     |              |        | Articles       | addComment        |           |
-| tags-index                          | /{lang}/tags                                       |              |        | Tags           | index             |           |
-| article-by-slug                     | /{lang}/articles/{slug}                            |              |        | Articles       | view-by-slug      |           |
-| page-by-slug                        | /{lang}/pages/{slug}                               |              |        | Articles       | view-by-slug      |           |
-| tag-by-slug                         | /{lang}/tags/{slug}                                |              |        | Tags           | view-by-slug      |           |
-| cookie-consent                      | /{lang}/cookie-consents/edit                       |              |        | CookieConsents | edit              |           |
-+-------------------------------------+----------------------------------------------------+--------------+--------+----------------+-------------------+-----------+
-
-The following possible route collisions were detected.
-+----------------+------------------+--------+--------+------------+--------+-----------+
-| Route name     | URI template     | Plugin | Prefix | Controller | Action | Method(s) |
-+----------------+------------------+--------+--------+------------+--------+-----------+
-| products:index | /{lang}/products |        |        | Products   | index  |           |
-| products-index | /{lang}/products |        |        | Products   | index  |           |
-+----------------+------------------+--------+--------+------------+--------+-----------+
-*/
+/**
+ * This file is part of the WillowCMS project.
+ * It defines the configuration for the application's routes, datasources, and email transport.
+ */
+declare(strict_types=1);
 /**
  * Routes configuration.
  *
@@ -106,9 +51,15 @@ return function (RouteBuilder $routes): void {
      * inconsistently cased URLs when used with `{plugin}`, `{controller}` and
      * `{action}` markers.
      */
+
+    // Set the default route class to DashedRoute for consistent URL formatting
     $routes->setRouteClass(DashedRoute::class); // Use DashedRoute for consistent URL formatting
+
+
+    // Set the default extensions for routes
     $routes->setExtensions(['xml', 'rss']); // Set default extensions for routes
 
+    // --------- Root routes ---------
     // Root robots.txt route must come before the scope
     $routes->connect( // Changed from /robots to /robots.txt
         '/robots.txt',
@@ -134,10 +85,20 @@ return function (RouteBuilder $routes): void {
         ]
     );
 
+    // --------- Language-specific routes ---------
+    // Connect the default routes for all controllers.
     $routes->scope('/', function (RouteBuilder $builder): void {
+        
         $builder->setExtensions(['xml', 'rss']);
         
-        $builder->connect('/', ['controller' => 'Articles', 'action' => 'index']);
+        // // Connect the default routes for all controllers.
+        // // This will connect the /controller/action URLs to the appropriate controller and action.
+        $builder->connect(
+            '/', 
+            ['controller' => 'Articles', 
+            'action' => 'index']
+        );
+        // This connects the root URL to the Articles controller's index action
         $builder->connect(
             '/',
             [
@@ -149,8 +110,6 @@ return function (RouteBuilder $routes): void {
                 '_name' => 'home'
             ]
         );
-
-
         // Language-specific robots.txt route
         $builder->connect(
             '/{lang}/robots.txt',
@@ -165,7 +124,6 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['lang']
             ]
         );
-
         // Language-specific sitemap route
         $builder->connect(
             '/{lang}/sitemap',
@@ -181,7 +139,6 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['lang']
             ]
         );
-
         // Language-specific rss route
         $builder->connect(
             '/{lang}/feed',  // Changed from /rss to /feed
@@ -196,9 +153,7 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['lang']
             ]
         );
-
-        // Language-specific user routes
-        // START: User routes ///////////
+        // Language-specific user route
         $builder->connect(
             '/users/login',
             [
@@ -210,7 +165,18 @@ return function (RouteBuilder $routes): void {
                 '_name' => 'login',
             ]
         );
-        $builder->connect('/users/register', ['controller' => 'Users', 'action' => 'register'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
+        // Language-specific register route
+        $builder->connect(
+            '/users/register',
+            [
+                'controller' => 'Users',
+                'action' => 'register'
+            ],
+            [
+                'routeClass' => 'ADmad/I18n.I18nRoute',
+                '_name' => 'register',
+            ]
+        );
         // Language-specific forgot password route
         $builder->connect(
             '/users/forgot-password',
@@ -262,31 +228,29 @@ return function (RouteBuilder $routes): void {
             ]
         );
         // Language-specific account edit route
-        $builder->connect('/users/edit/{id}',
-        [
-            'controller' => 'Users',
-            'action' => 'edit'
-        ],
-        [
-            '_name' => 'account',
-            'routeClass' => 'ADmad/I18n.I18nRoute',
-            'pass' => ['id'],
-        ]);
-
-        // END: User routes ///////////
-
-
+        $builder->connect('/users/edit/{id}', 
+            [
+                'controller' => 'Users',
+                'action' => 'edit'
+            ],
+            [
+                'routeClass' => 'ADmad/I18n.I18nRoute',
+                '_name' => 'account',
+                'pass' => ['id'],
+            ]
+        );
         // Language-specific article routes
-        $builder->connect('/articles/add-comment/*', ['controller' => 'Articles', 'action' => 'addComment'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
+        $builder->connect('/articles/add-comment/*', 
+        ['controller' => 'Articles', 'action' => 'addComment'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
+        // Language-specific tags index route
         $builder->connect(
             '/tags',
             ['controller' => 'Tags', 'action' => 'index'],
             [
                 'routeClass' => 'ADmad/I18n.I18nRoute',
                 '_name' => 'tags-index',
-            ]
+            ],
         );
-        
         // Language-specific article by slug route
         $builder->connect(
             'articles/{slug}',
@@ -300,7 +264,6 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['slug'],
             ]
         );
-
         // Language-specific page by slug routes
         $builder->connect(
             'pages/{slug}',
@@ -314,7 +277,7 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['slug'] 
             ]
         );
-
+        // Language-specific tag by slug route
         $builder->connect(
             'tags/{slug}',
             [
@@ -327,11 +290,25 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['slug'] 
             ]
         );
+        
+        
 
 
-        // TODO: replace with DRY routes AND remove the commented out code
-        //// START: Product routes ///////////
-               // Language-specific routes for products, page
+        // Language-specific cookie consent route
+        $builder->connect(  
+            'cookie-consents/edit',
+            [
+                'controller' => 'CookieConsents',
+                'action' => 'edit'
+            ],
+            [
+                'routeClass' => 'ADmad/I18n.I18nRoute',
+                '_name' => 'cookie-consent',
+            ]
+        );
+        /////////////////// END: Default connected routes from v1.4.0
+
+                //// START: Product routes ///////////
         // $builder->connect('/{lang}/products', ['controller' => 'Products', 'action' => 'index']);
         // $builder->connect(
         //     '/{lang}/products',
@@ -346,8 +323,6 @@ return function (RouteBuilder $routes): void {
         //         'pass' => ['lang']
         //     ]
         // );
-
-
         // $builder->connect('/products/add-comment/*', ['controller' => 'Products', 'action' => 'addComment'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
         // $builder->connect(
         //     '/product-tags',
@@ -370,57 +345,15 @@ return function (RouteBuilder $routes): void {
         //         'pass' => ['slug'],
         //     ]
         // );
+        // Language-specific cookie consent route
 
-
-
-        $builder->connect(
-            'cookie-consents/edit',
-            [
-                'controller' => 'CookieConsents',
-                'action' => 'edit'
-            ],
-            [
-                'routeClass' => 'ADmad/I18n.I18nRoute',
-                '_name' => 'cookie-consent',
-            ]
-        );
-    });
-    // END OF DEFAULT ROUTES
-
-
-
-    // // contact-manager plugin routes
-    // $routes->plugin('ContactManager', function (RouteBuilder $routes) {
-
-        
-        
-        // Connect the default routes for all controllers in the ContactManager plugin.
-        // This will connect the /contact-manager/controller/action URLs to the appropriate controller and action.
-        //$routes->fallbacks is used to automatically connect the default routes for all controllers in the plugin.
-            // $routes->fallbacks(DashedRoute::class); // Use DashedRoute for consistent URL formatting
-
-        // Connect the default routes for the ContactManager plugin.
-        // This will connect the /contact-manager/controller/action URLs to the appropriate controller and action.
-        // STARTING THE ADMIN PREFIX ROUTES
-
-    // START: Admin routes
-    // Connect the default routes for all controllers.
-    // This will connect the /controller/action URLs to the appropriate controller and action.
-
-    $routes->prefix('Admin', function (RouteBuilder $routes) { // Admin prefix routes
-        $routes->connect('/', ['controller' => 'Articles', 'action' => 'index', 'prefix' => 'Admin']);
-        
-        // Specific route for removing images from galleries
-        $routes->connect(
-            '/image-galleries/remove-image/{id}/{imageId}',
-            ['controller' => 'ImageGalleries', 'action' => 'removeImage'],
-            ['pass' => ['id', 'imageId']]
-        );
-        
-        $routes->fallbacks(DashedRoute::class); // Use DashedRoute for consistent URL formatting
+                //// END: Product routes ///////////
     });
 
-    // // Connect the default routes for products.
+
+
+    ///////////// Admin routes ////////////
+    // // Connect the admin routes for products.
     // // This will connect the /controller/action URLs to the appropriate controller and action.
     // $routes->prefix('Admin', function (RouteBuilder $routes) { // Admin prefix routes
     //     $routes->connect(
@@ -439,15 +372,55 @@ return function (RouteBuilder $routes): void {
     // END: Admin routes
 
     // });
+    
+
+
+    // Admin prefix routes
+    $routes->prefix('Admin', function (RouteBuilder $routes) { // Admin prefix routes
+        $routes->connect('/', 
+        ['controller' => 'Articles', 'action' => 'index', 'prefix' => 'Admin']
+        ); // Connects /admin to /admin/articles/index
+        
+        // Specific route for removing images from galleries
+        $routes->connect(
+            '/image-galleries/remove-image/{id}/{imageId}',
+            ['controller' => 'ImageGalleries', 'action' => 'removeImage'],
+            ['pass' => ['id', 'imageId']]
+        );
+        
+        $routes->fallbacks(DashedRoute::class); // Use DashedRoute for consistent URL formatting
+    });
+    // END: Admin prefix routes
+
+
+    // --------- Plugin routes ---------
+    // ContactManager plugin routes
+    // - Connect /contact-manager prefix to plugin's controllers/actions.
+    // - Uses plugin's config/routes.php for DRY structure.
+    // - Keeps ContactManager routes separate from main app routes.
+    // - Useful for testing and organization.
+    $routes->scope('/', function (RouteBuilder $routes) {
+        // Connect other routes.
+        $routes->scope('/backend', function (RouteBuilder $routes) {
+            $routes->loadPlugin('ContactManager');
+        });
+    });
+    // // END: ContactManager plugin routes
 
 
 
-    // Add DebugKit routes with proper context if in debug mode
 
 
+    //////////// DebugKit routes ////////////
+    // Connect the DebugKit plugin routes
 
-    // DebugKit routes are only loaded in debug mode
-    // This allows you to access the DebugKit toolbar and panels
+    /*
+     * Connect the default routes for all controllers.
+     * This will connect the /controller/action URLs to the appropriate controller and action.
+     * Add DebugKit routes with proper context if in debug mode.
+     * DebugKit routes are only loaded in debug mode.
+     * This allows you to access the DebugKit toolbar and panels.
+     */
     if (\Cake\Core\Configure::read('debug')) {
         $routes->plugin('DebugKit', function (RouteBuilder $routes) {
             $routes->fallbacks();
