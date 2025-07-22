@@ -18,7 +18,7 @@ services:
       - DEBUG=true
       - APP_ENCODING=UTF-8
       - APP_DEFAULT_LOCALE=en_GB
-      - APP_DEFAULT_TIMEZONE=Europe/London
+      - APP_DEFAULT_TIMEZONE=America/Chicago
       - SECURITY_SALT=developmentsalt
       - DB_HOST=mysql
       - DB_USERNAME=cms_user
@@ -65,7 +65,7 @@ services:
     ports:
       - "3310:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   phpmyadmin:
@@ -78,21 +78,21 @@ services:
       - PMA_PASSWORD=password
       - UPLOAD_LIMIT=300M
 
-  jenkins:
-    build:
-      context: .
-      dockerfile: docker/jenkins/Dockerfile
-    privileged: true
-    user: root
-    ports:
-      - "8081:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./docker/jenkins/jenkins.yaml:/var/jenkins_home/jenkins.yaml
-    environment:
-      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+  # jenkins:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/jenkins/Dockerfile
+  #   privileged: true
+  #   user: root
+  #   ports:
+  #     - "8081:8080"
+  #     - "50000:50000"
+  #   volumes:
+  #     - jenkins_home:/var/jenkins_home
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - ./docker/jenkins/jenkins.yaml:/var/jenkins_home/jenkins.yaml
+  #   environment:
+  #     - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
 
   mailpit:
     image: axllent/mailpit:latest
@@ -121,7 +121,6 @@ services:
       - willowcms
 
 volumes:
-  mysql_data:
   rabbitmq_data:
   jenkins_home:
   mailpit_data:

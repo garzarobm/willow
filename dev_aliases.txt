@@ -1,4 +1,50 @@
 # CakePHP Shells
+# This script provides aliases and functions for common CakePHP commands
+# and Docker management commands for the WillowCMS project.
+
+# Quick list of all available commands:
+# - cake_shell: Run CakePHP shell commands inside the Docker container.
+# - willowcms_exec: Execute commands inside the WillowCMS Docker container.
+# - willowcms_shell: Open an interactive shell inside the WillowCMS Docker container.
+# - phpunit: Run PHPUnit tests.
+# - phpunit_cov: Run PHPUnit with coverage report in text format.
+# - phpunit_cov_html: Run PHPUnit with coverage report in HTML format.
+# - composer_cs_check: Check code style with Composer.
+# - composer_cs_fix: Fix code style issues with Composer.
+# - phpcs_sniff: Run PHP CodeSniffer with CakePHP standards.
+# - phpcs_fix: Fix code style issues with PHP CodeSniffer.
+# - phpstan_analyse: Run PHPStan static analysis.
+# - composer_update: Update Composer dependencies.
+# - cake_queue_worker: Start the CakePHP queue worker.
+# - cake_queue_worker_verbose: Start the CakePHP queue worker with verbose output.
+# - set_permissions: Set permissions for specific directories.
+# - edit_bashrc: Edit the .bashrc file.
+# - reload_bashrc: Reload the .bashrc file.
+# - docker_names: List all Docker container names.
+# - docker_prune: Prune unused Docker resources.
+# - docker_up: Start Docker containers in detached mode.
+# - docker_down: Stop Docker containers.
+# - docker_downv: Stop Docker containers and remove volumes.
+# - docker_logs: Follow Docker container logs.
+# - gs: Git status.
+# - gp: Git pull.
+# - gc: Git commit.
+# - gd: Git diff.
+# - cake_bake_model: Bake a CakePHP model.
+# - cake_bake_controller: Bake a CakePHP controller.
+# - cake_bake_template: Bake a CakePHP template.
+# - cake_bake_migration: Bake a CakePHP migration.
+# - cake_clear_cache: Clear CakePHP cache.
+# - cake_migrate: Run CakePHP migrations.
+# - cake_rollback: Rollback CakePHP migrations.
+# - bake_snapshot: Bake a migration snapshot.
+# - bake_diff: Bake a migration diff.
+# - i18n_extract: Extract internationalization strings.
+# - i18n_load: Load default internationalization data.
+# - i18n_translate: Translate internationalization strings.
+# - i18n_gen_po: Generate PO files for internationalization.
+# - export_data: Export default data.
+# - change_ownership: Change ownership of the current directory to the current user.
 
 # Usage: cake_shell some_command --option 'value'
 #        cake_shell bake migration_snapshot Initial
