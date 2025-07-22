@@ -65,15 +65,8 @@
     {
         "version": 20250605211400,
         "migration_name": "AddGalleryAiSettings",
-        "start_time": "2025-07-22T02:31:02+01:00",
-        "end_time": "2025-07-22T02:31:02+01:00",
-        "breakpoint": false
-    },
-    {
-        "version": 20250716032020,
-        "migration_name": "CreateProducts",
-        "start_time": "2025-07-22T02:31:02+01:00",
-        "end_time": "2025-07-22T02:31:02+01:00",
+        "start_time": "2025-07-22T03:16:10+01:00",
+        "end_time": "2025-07-22T03:16:10+01:00",
         "breakpoint": false
     }
 ]

@@ -1,1 +1,102 @@
-[]
+[
+    {
+        "model": "Articles",
+        "foreign_key": "f0b8010d-d817-4138-8fd6-9abb4e9b9431",
+        "slug": "nkjupxwxh-cqdkypi-jyyyznw-vkikyculed-mzzvnbl-cnjlwuwhwq-yjapaxducx-lxpc-tsalquxjl-qmosxtx-glzdeik-yh"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "2bfb40b4-e945-4431-b3f5-be96005a3234",
+        "slug": "sdo-ikrho-cnok-ttdaapbq-qcl-varyg-pgsviu-njbvikagrv-ckn-mpqdahbl-ojjp-crewzytqo-wfhafb-hszh-cxxafe-d"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "23f2cae7-3ba2-4051-a2c2-f35879120a8b",
+        "slug": "odrei-xuzf"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "48a72869-3047-490f-9508-a8ead336f06a",
+        "slug": "selnv-pyzeayzu-ihzc-ssfbklwwyo-igc-lofawy-dfjfmnjy-adukzcak-gcuuckk-quoug-xhhf-wcaeeg-bbppef-kvlmk-b"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "f5162e9e-18cd-40c6-a6c9-7ed45d2c8f4d",
+        "slug": "vffutdlagj-qacpxpup-oicff-ovce-ihkifwjstv-ehj-xvanqevimy-ziakm-swaljqdh-pyo-cpotejmgf-qnrtzncscx-pan"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "6bd85275-ea59-43b2-a94e-288c6fae9a7d",
+        "slug": "noplwru-el"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "f76c13c9-d24e-47cd-9834-d5a46f619de2",
+        "slug": "fzpqh-fdjb"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "3945f774-d85d-4c46-b883-0121bb3dbeb5",
+        "slug": "tlkjjlxwq-frdedc-xflucqsd-mabrc-hmz-nrmn-kcdnd-gkxgfjeji-rfpeub-soxlxqjbt-ufmswr-oto-gamry-rtiskyc-t"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "e5bf43a9-eede-46d4-8f17-c5aa04d1bd4a",
+        "slug": "ngr-eaar-y"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "2b94e9a7-2753-4a38-ac11-699909127ced",
+        "slug": "hypieqql-lslm-uuyvb-sidi-syrtekbmz-bcl-pveierxoxn-jwrmyf-mzdn-ldqljfqa-dmjwgkclq-bzmhbgwgqq-cmdkv-ix"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "b934fa68-4b9c-4ce7-903a-950e71bdbe14",
+        "slug": "iuxlrv-frs-vtznzx-zzenitk-qgkyrirmv-dhah-uyueciuj-cwsofxrna-nlncuapjrx-vkeayl-afgtojam-cvymfm-ephl-g"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "72e6f858-2de7-4c68-ad50-fef5af807e61",
+        "slug": "mtlx-pbcg"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "983117f7-19d3-4064-9920-d8a928ec0155",
+        "slug": "obqfanpswl-gektloxdc-dglnunqip-sgngtc-usy-taihia-ptvmfl-wdbifc-irv-hgmlyhnp-dsjyyanlz-zevkul-wwlpbb"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "d34ea90e-7430-481b-81fa-c4fe5b2a4c9c",
+        "slug": "axgcjbyx-r"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "a09e7d16-072a-4d7f-a1da-aad7f9dd539b",
+        "slug": "lcjcz-vaotd-ebnbzu-xwc-qjeqeauxb-zde-walgcapkxv-nzwrftt-qgtq-mesdewvyvk-grn-ppgtlob-svbfjkrj-ngref-t"
+    },
+    {
+        "model": "Articles",
+        "foreign_key": "4c1ca7fe-4b35-4ddf-92d0-53b319e63e76",
+        "slug": "slmktn-abjilxbf-vls-opw-mosnyu-glhf-zgyxkn-uux-xyae-ztbczkqvr-hjwcscz-aois-juyfncq-ztqpm-otk-omb-brd"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "245dcbd9-217f-4f0f-a622-c89eb261ddb3",
+        "slug": "hnm-vagvm"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "84d380b6-386c-4f13-900e-a82d381b1fd1",
+        "slug": "jwvyumca-g"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "5005a5d3-1ff4-4334-81b5-068ed001e67e",
+        "slug": "jhdpjx-gws"
+    },
+    {
+        "model": "Tags",
+        "foreign_key": "e09a5060-14b6-48cd-9d50-1aeff4c5d6b4",
+        "slug": "aeyrwaxik"
+    }
+]

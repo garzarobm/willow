@@ -396,6 +396,18 @@
         "column_width": 2
     },
     {
+        "id": "533caa7e-2797-4c2d-aa5e-945e0b522f9b",
+        "ordering": 200,
+        "category": "AI",
+        "key_name": "gallerySEO",
+        "value": "0",
+        "value_type": "bool",
+        "value_obscure": false,
+        "description": "Enable AI-powered SEO field generation for image galleries.",
+        "data": null,
+        "column_width": 2
+    },
+    {
         "id": "57304eb5-4dc1-40b7-891e-284372676246",
         "ordering": 21,
         "category": "Security",
@@ -440,6 +452,18 @@
         "value_type": "bool",
         "value_obscure": false,
         "description": "Enable translations in Turkish",
+        "data": null,
+        "column_width": 2
+    },
+    {
+        "id": "5c61ee2f-f03f-46c8-9b5a-18cf039d79f7",
+        "ordering": 201,
+        "category": "AI",
+        "key_name": "galleryTranslations",
+        "value": "0",
+        "value_type": "bool",
+        "value_obscure": false,
+        "description": "Enable automatic translation of image galleries to all enabled languages.",
         "data": null,
         "column_width": 2
     },
@@ -596,6 +620,18 @@
         "value_type": "bool",
         "value_obscure": false,
         "description": "Block requests when the client IP address cannot be determined. Recommended for production environments to prevent IP detection bypass.",
+        "data": null,
+        "column_width": 2
+    },
+    {
+        "id": "986f7450-c35c-4c14-97f9-94f3f15f1617",
+        "ordering": 200,
+        "category": "AI",
+        "key_name": "gallerySEO",
+        "value": "0",
+        "value_type": "bool",
+        "value_obscure": false,
+        "description": "Enable AI-powered SEO field generation for image galleries.",
         "data": null,
         "column_width": 2
     },
@@ -980,6 +1016,18 @@
         "value_type": "numeric",
         "value_obscure": false,
         "description": "Time window in seconds for admin area rate limiting.",
+        "data": null,
+        "column_width": 2
+    },
+    {
+        "id": "fc583148-e8ae-4eaa-b44b-d1e76280c657",
+        "ordering": 201,
+        "category": "AI",
+        "key_name": "galleryTranslations",
+        "value": "0",
+        "value_type": "bool",
+        "value_obscure": false,
+        "description": "Enable automatic translation of image galleries to all enabled languages.",
         "data": null,
         "column_width": 2
     }
