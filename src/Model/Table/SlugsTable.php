@@ -73,22 +73,22 @@ class SlugsTable extends Table
             ->toArray();
 
         foreach ($models as $model) {
-            try {
-                $className = App::className($model, 'Model/Table', 'Table');
-                if ($className) {
-                    $this->belongsTo($model, [
-                        'className' => $className,
-                        'foreignKey' => 'foreign_key',
-                        'conditions' => [$this->getAlias() . '.model' => $model],
-                        'joinType' => 'LEFT',
-                    ]);
-                }
-            } catch (Exception $e) {
-                $this->log(sprintf(
-                    'Failed to setup association for model %s: %s',
-                    $model,
-                    $e->getMessage(),
-                ), 'error');
+        try {
+            $className = App::className($model, 'Model/Table', 'Table');
+            if ($className) {
+                $this->belongsTo($model, [
+                    'className' => $className,
+                    'foreignKey' => 'foreign_key',
+                    'conditions' => [$this->getAlias() . '.model' => $model],
+                    'joinType' => 'LEFT',
+                ]);
+            }
+        } catch (Exception $e) {
+            $this->log(sprintf(
+                'Failed to setup association for model %s: %s',
+                $model,
+                $e->getMessage()
+            ), 'error');
             }
         }
     }
@@ -129,6 +129,47 @@ class SlugsTable extends Table
 
         return $validator;
     }
+
+    
+
+    
+
+    // /**
+    //  * Default validation rules.
+    //  *
+    //  * @param \Cake\Validation\Validator $validator Validator instance.
+    //  * @return \Cake\Validation\Validator
+    //  */
+    // public function validationDefault(Validator $validator): Validator
+    // {
+    //     $validator
+    //         ->uuid('id')
+    //         ->allowEmptyString('id', 'create');
+
+    //     $validator
+    //         ->scalar('model')
+    //         ->maxLength('model', 20)
+    //         ->requirePresence('model', 'create')
+    //         ->notEmptyString('model');
+
+    //     $validator
+    //         ->uuid('foreign_key')
+    //         ->requirePresence('foreign_key', 'create')
+    //         ->notEmptyString('foreign_key');
+
+    //     $validator
+    //         ->scalar('slug')
+    //         ->maxLength('slug', 255)
+    //         ->requirePresence('slug', 'create')
+    //         ->notEmptyString('slug')
+    //         ->regex(
+    //             'slug',
+    //             '/^[a-z0-9-]+$/',
+    //             __('The slug must be URL-safe (only lowercase letters, numbers, and hyphens)'),
+    //         );
+
+    //     return $validator;
+    // }
 
     /**
      * Returns a rules checker object that will be used for validating

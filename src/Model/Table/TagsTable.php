@@ -86,6 +86,12 @@ class TagsTable extends Table
             'targetForeignKey' => 'article_id',
             'joinTable' => 'articles_tags',
         ]);
+        // add Products association
+        $this->belongsToMany('Products', [
+            'foreignKey' => 'tag_id',
+            'targetForeignKey' => 'product_id',
+            'joinTable' => 'products_tags',
+        ]);
 
         $this->addBehavior('QueueableImage', [
             'folder_path' => 'files/Tags/image/',

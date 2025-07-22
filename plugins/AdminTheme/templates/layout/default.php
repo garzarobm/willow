@@ -150,11 +150,13 @@ $session = $this->request->getSession();
       <nav class="admin-sidebar bg-light border-end d-none d-lg-block" id="adminSidebarDesktop">
         <div class="sidebar-content">
           <div class="list-group list-group-flush">
-            <!-- Dashboard -->
+            <!-- Dashboard Section in Sidebar -->
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
               <h6 class="mb-1 text-muted sidebar-text"><?= __('Dashboard') ?></h6>
             </div>
             
+
+            <!-- Analytics -->
             <?= $this->Html->link(
                 '<i class="fas fa-tachometer-alt sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Analytics') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'PageViews', 'action' => 'dashboard'],
@@ -167,11 +169,45 @@ $session = $this->request->getSession();
                 ]
             ) ?>
 
-            <!-- Content Management -->
+            <!-- section START OF CUSTOM BUSINESS CONTENT -->
+            <!-- Business Content -->
+            <div class="list-group-item list-group-item-action border-0 sidebar-header">
+              <h6 class="mb-1 text-muted sidebar-text"><?= __('Business') ?></h6>
+            </div>
+
+            <!-- Products -->
+            <?= $this->Html->link(
+              '<i class="fas fa-briefcase sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Products') . '</span>',
+              ['prefix' => 'Admin', 'controller' => 'Products', 'action' => 'index'],
+              [
+                'class' => 'list-group-item list-group-item-action border-0 sidebar-link' . ($activeCtl == 'Products' ? ' active' : ''),
+                'escape' => false,
+                'title' => __('Products'),
+                'data-bs-toggle' => 'tooltip',
+                'data-bs-placement' => 'right'
+              ]
+            ) ?>
+            <!-- Articles -->
+            <?= $this->Html->link(
+                '<i class="fas fa-newspaper sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Articles') . '</span>',
+                ['prefix' => 'Admin', 'controller' => 'Articles', 'action' => 'index'],
+                [
+                    'class' => 'list-group-item list-group-item-action border-0 sidebar-link' . (($activeCtl == 'Articles' && $activeAct != 'treeIndex' && empty($this->request->getQuery('kind'))) ? ' active' : ''),
+                    'escape' => false,
+                    'title' => __('Articles'),
+                    'data-bs-toggle' => 'tooltip',
+                    'data-bs-placement' => 'right'
+                ]
+            ) ?>
+
+            <!-- Default Content  -->
             <div class="list-group-item list-group-item-action border-0 sidebar-header">
               <h6 class="mb-1 text-muted sidebar-text"><?= __('Content') ?></h6>
             </div>
 
+            <!-- endsection END OF NEW BUSINESS CONTENT -->
+
+            <!-- Posts -->
             <?= $this->Html->link(
                 '<i class="fas fa-newspaper sidebar-icon"></i><span class="sidebar-text ms-2">' . __('Posts') . '</span>',
                 ['prefix' => 'Admin', 'controller' => 'Articles', 'action' => 'index'],

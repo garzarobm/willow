@@ -79,6 +79,7 @@ return function (RouteBuilder $routes): void {
         $builder->setExtensions(['xml', 'rss']);
         
         $builder->connect('/', ['controller' => 'Articles', 'action' => 'index']);
+        // Home route
         $builder->connect(
             '/',
             [
@@ -90,6 +91,7 @@ return function (RouteBuilder $routes): void {
                 '_name' => 'home'
             ]
         );
+        
 
         // Language-specific robots.txt route
         $builder->connect(
@@ -137,6 +139,7 @@ return function (RouteBuilder $routes): void {
             ]
         );
 
+        // RSS feed route
         $builder->connect(
             '/users/login',
             [
@@ -149,6 +152,7 @@ return function (RouteBuilder $routes): void {
             ]
         );
         $builder->connect('/users/register', ['controller' => 'Users', 'action' => 'register'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
+        // Password reset routes
         $builder->connect(
             '/users/forgot-password',
             [
@@ -230,6 +234,16 @@ return function (RouteBuilder $routes): void {
                 'pass' => ['slug'],
             ]
         );
+        // Products routes (mirroring Articles)
+        $builder->connect(
+            'products/{slug}',
+            ['controller' => 'Products', 'action' => 'view-by-slug'],
+            [
+                'routeClass' => 'ADmad/I18n.I18nRoute',
+                '_name' => 'product-by-slug',
+                'pass' => ['slug']
+            ]
+        );
 
         $builder->connect(
             'pages/{slug}',
@@ -279,7 +293,56 @@ return function (RouteBuilder $routes): void {
             ['controller' => 'ImageGalleries', 'action' => 'removeImage'],
             ['pass' => ['id', 'imageId']]
         );
-        
+        // Products admin routes (mirroring Articles admin)
+        $routes->connect(
+            '/products',
+            ['controller' => 'Products', 'action' => 'index']
+        );
+
+        $routes->connect(
+            '/products/add',
+            ['controller' => 'Products', 'action' => 'add']
+        );
+
+        $routes->connect(
+            '/products/edit/{id}',
+            ['controller' => 'Products', 'action' => 'edit'],
+            ['pass' => ['id']]
+        );
+
+        $routes->connect(
+            '/products/delete/{id}',
+            ['controller' => 'Products', 'action' => 'delete'],
+            ['pass' => ['id']]
+        );
+
+        $routes->connect(
+            '/products/view/{id}',
+            ['controller' => 'Products', 'action' => 'view'],
+            ['pass' => ['id']]
+        );
+        $routes->connect(
+            '/products/tree-index',
+            ['controller' => 'Products', 'action' => 'treeIndex']
+        );
+
+        $routes->connect(
+            '/products/featured',
+            ['controller' => 'Products', 'action' => 'featured']
+        );
+        $routes->connect(
+            '/products/search',
+            ['controller' => 'Products', 'action' => 'search']
+        );
+        $routes->connect(
+            '/products/search-results',
+            ['controller' => 'Products', 'action' => 'searchResults']
+        );
+        $routes->connect(
+            '/products/related',
+            ['controller' => 'Products', 'action' => 'related']
+        );
+
         $routes->fallbacks(DashedRoute::class);
     });
 
