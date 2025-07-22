@@ -14,6 +14,13 @@
         "group_name": "general"
     },
     {
+        "id": "159cd203-c3f9-4acc-a6cb-d59aeead1c72",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
         "id": "1db31da9-a38d-4e72-9a62-494cde613591",
         "level": "error",
         "message": "[Cake\\Datasource\\Exception\\InvalidPrimaryKeyException] Record not found in table `requests` with primary key `[NULL]`. in /var/www/html/vendor/cakephp/cakephp/src/ORM/Table.php on line 1514\nStack Trace:\n- ROOT/vendor/cakephp/debug_kit/src/Controller/RequestsController.php:60\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:157\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /debug-kit/toolbar?q=/debug-kit/toolbar&\nClient IP: 151.101.115.52",
@@ -24,6 +31,34 @@
         "id": "1fb0d514-0d40-40e5-b3b8-5191ac39e7b1",
         "level": "error",
         "message": "[Cake\\Http\\Exception\\NotFoundException] Not Found in /var/www/html/vendor/cakephp/debug_kit/src/Controller/PanelsController.php on line 69\nStack Trace:\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:157\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /debug-kit/panels/%2A?q=/debug-kit/panels/*&\nClient IP: 151.101.115.52",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "2ceff9e1-d9af-4d21-9ea0-af9a60e40bab",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "3db4f557-6e85-4417-a615-a8a8d4eb7f97",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "40a3b29d-7ee7-4031-9111-85834c0c6d0d",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "54936931-dc0b-419f-9108-3a5b797537bc",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
         "context": "{\"scope\":[]}",
         "group_name": "general"
     },
@@ -39,6 +74,13 @@
         "level": "info",
         "message": "User created successfully: admin (ID: da264525-a966-4ad1-be81-307fd39c62eb)",
         "context": "{\"scope\":[\"user_management\",\"user_creation\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "93c32e87-d91c-4c10-af87-1fa5fa55ef11",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
         "group_name": "general"
     },
     {
@@ -63,6 +105,13 @@
         "group_name": "general"
     },
     {
+        "id": "a9344bec-e809-4219-866d-e71a923fcfc1",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
         "id": "af343f70-a610-4859-a75e-cd431e1ee664",
         "level": "debug",
         "message": "Reading migrations status for test...",
@@ -70,7 +119,35 @@
         "group_name": "general"
     },
     {
+        "id": "b2486bcf-87da-4d67-94e3-e5aa9c1a2fc4",
+        "level": "info",
+        "message": "Received test job message: test-id : Test User Save Failure",
+        "context": "{\"group_name\":\"App\\\\Test\\\\TestCase\\\\Job\\\\TestableJob\",\"scope\":[]}",
+        "group_name": "App\\Test\\TestCase\\Job\\TestableJob"
+    },
+    {
         "id": "bcf0af2e-f19b-4be3-9e3b-a53324d06fee",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "bda3d0c8-5a1a-4864-a80d-8cb6a050d1f4",
+        "level": "error",
+        "message": "test job failed. ID: test-id (Test User Save Failure) Error: Operation returned false or null",
+        "context": "{\"group_name\":\"App\\\\Test\\\\TestCase\\\\Job\\\\TestableJob\",\"scope\":[]}",
+        "group_name": "App\\Test\\TestCase\\Job\\TestableJob"
+    },
+    {
+        "id": "c18201d3-ba9f-4640-8f22-14534040adc2",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "c4a32810-9790-4090-9262-9dfc6c59e05b",
         "level": "debug",
         "message": "Reading migrations status for test...",
         "context": "{\"scope\":[]}",
@@ -94,6 +171,20 @@
         "id": "e84c762e-c9f9-439a-b344-5ebac9362fcf",
         "level": "error",
         "message": "[TypeError] DebugKit\\Model\\Table\\PanelsTable::findByRequest(): Argument #2 ($requestId) must be of type string|int, null given, called in /var/www/html/vendor/cakephp/cakephp/src/ORM/Table.php on line 2745 in /var/www/html/vendor/cakephp/debug_kit/src/Model/Table/PanelsTable.php on line 57\nStack Trace:\n- CORE/src/ORM/Table.php:2745\n- CORE/src/ORM/Table.php:2645\n- CORE/src/ORM/Table.php:1279\n- ROOT/vendor/cakephp/debug_kit/src/Controller/PanelsController.php:66\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:157\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /debug-kit/panels?q=/debug-kit/panels&\nClient IP: 151.101.115.52",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "ee83f550-d9bf-40aa-b6e2-ec9a24db35c9",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "f3d97599-594a-48c7-ad5e-782b977ac7e7",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
         "context": "{\"scope\":[]}",
         "group_name": "general"
     },
