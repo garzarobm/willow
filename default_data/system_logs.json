@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3e4ce6b1-13a9-4d55-8c0c-a71956a5cde7",
+        "level": "info",
+        "message": "Attempting to create user with data: {\"username\":\"admin\",\"confirm_password\":\"password\",\"email\":\"admin@test.com\",\"is_admin\":true,\"active\":1}",
+        "context": "{\"scope\":[\"user_management\",\"user_creation\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "bb4c2947-a4fe-4fd6-bf24-2a961e5c7fdb",
+        "level": "info",
+        "message": "User created successfully: admin (ID: 02d9e513-bbe5-484e-8e5a-d2e84782fc23)",
+        "context": "{\"scope\":[\"user_management\",\"user_creation\"]}",
+        "group_name": "general"
+    }
+]
