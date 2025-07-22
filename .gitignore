@@ -9,17 +9,17 @@
 
 # Willow code_exports #
 #######################
-willow_cms_code.txt
-willow_cms_code_Controllers.txt
-willow_cms_code_Models.txt
-willow_cms_code_Plugins.txt
-willow_cms_code_Tests.txt
-willow_cms_code_Views.txt
-willow_cms_code_Commands.txt
-willow_cms_code_Jobs.txt
-willow_cms_code_Logs.txt
-willow_cms_code_Services.txt
-willow_cms_code_Utilities.txt
+# willow_cms_code.txt
+# willow_cms_code_Controllers.txt
+# willow_cms_code_Models.txt
+# willow_cms_code_Plugins.txt
+# willow_cms_code_Tests.txt
+# willow_cms_code_Views.txt
+# willow_cms_code_Commands.txt
+# willow_cms_code_Jobs.txt
+# willow_cms_code_Logs.txt
+# willow_cms_code_Services.txt
+# willow_cms_code_Utilities.txt
 
 # Code Coverage Report #
 ########################
@@ -27,23 +27,23 @@ willow_cms_code_Utilities.txt
 
 # Willow specific files/folders #
 #################################
-/webroot/files/*
-!/webroot/files/Images
-/webroot/files/Images/*
-!/webroot/files/Images/image
-/webroot/files/Images/image/*
-!/webroot/files/Images/image/.gitkeep
-!/webroot/files/Users
-/webroot/files/Users/*
-!/webroot/files/Users/image
-/webroot/files/Users/image/*
-!/webroot/files/Users/image/.gitkeep
-!/webroot/files/Articles
-/webroot/files/Articles/*
-!/webroot/files/Articles/image
-/webroot/files/Articles/image/*
-!/webroot/files/Articles/image/.gitkeep
-/dump.rdb
+# /webroot/files/*
+# !/webroot/files/Images
+# /webroot/files/Images/*
+# !/webroot/files/Images/image
+# /webroot/files/Images/image/*
+# !/webroot/files/Images/image/.gitkeep
+# !/webroot/files/Users
+# /webroot/files/Users/*
+# !/webroot/files/Users/image
+# /webroot/files/Users/image/*
+# !/webroot/files/Users/image/.gitkeep
+# !/webroot/files/Articles
+# /webroot/files/Articles/*
+# !/webroot/files/Articles/image
+# /webroot/files/Articles/image/*
+# !/webroot/files/Articles/image/.gitkeep
+# /dump.rdb
 
 # Robots.txt #
 ##############
@@ -104,5 +104,5 @@ project_files_backups
 project_mysql_backups
 
 # CakePHP Book
-CakePHPBook.txt
 docker/mailpit/data/mailpit.db
+docker/mysql/data
