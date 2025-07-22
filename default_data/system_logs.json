@@ -1,0 +1,114 @@
+[
+    {
+        "id": "01d41dd7-1f83-4d32-9f15-7b28f1738d0b",
+        "level": "warning",
+        "message": "MissingTemplateException - Failed to render error template `badMethodCall` . Error: Template file `Error/bad_method_call.php` could not be found.\n\nThe following paths were searched:\n\n- `/var/www/html/plugins/DefaultTheme/templates/Error/bad_method_call.php`\n- `/var/www/html/templates/Error/bad_method_call.php`\n- `/var/www/html/vendor/cakephp/cakephp/templates/Error/bad_method_call.php`\n\nStack Trace\n: #0 /var/www/html/vendor/cakephp/cakephp/src/View/View.php(782): Cake\\View\\View->_getTemplateFileName('...')\n#1 /var/www/html/vendor/cakephp/cakephp/src/Controller/Controller.php(712): Cake\\View\\View->render()\n#2 /var/www/html/vendor/cakephp/cakephp/src/Error/Renderer/WebExceptionRenderer.php(432): Cake\\Controller\\Controller->render('...')\n#3 /var/www/html/vendor/cakephp/cakephp/src/Error/Renderer/WebExceptionRenderer.php(277): Cake\\Error\\Renderer\\WebExceptionRenderer->_outputMessage('...')\n#4 /var/www/html/src/Error/AppExceptionRenderer.php(62): Cake\\Error\\Renderer\\WebExceptionRenderer->render()\n#5 /var/www/html/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(149): App\\Error\\AppExceptionRenderer->render()\n#6 /var/www/html/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(119): Cake\\Error\\Middleware\\ErrorHandlerMiddleware->handleException(Object(BadMethodCallException), Object(Cake\\Http\\ServerRequest))\n#7 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(82): Cake\\Error\\Middleware\\ErrorHandlerMiddleware->process(Object(Cake\\Http\\ServerRequest), Object(Cake\\Http\\Runner))\n#8 /var/www/html/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php(60): Cake\\Http\\Runner->handle(Object(Cake\\Http\\ServerRequest))\n#9 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(82): DebugKit\\Middleware\\DebugKitMiddleware->process(Object(Cake\\Http\\ServerRequest), Object(Cake\\Http\\Runner))\n#10 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(60): Cake\\Http\\Runner->handle(Object(Cake\\Http\\ServerRequest))\n#11 /var/www/html/vendor/cakephp/cakephp/src/Http/Server.php(104): Cake\\Http\\Runner->run(Object(Cake\\Http\\MiddlewareQueue), Object(Cake\\Http\\ServerRequest), Object(App\\Application))\n#12 /var/www/html/webroot/index.php(37): Cake\\Http\\Server->run()\n#13 {main}",
+        "context": "{\"scope\":[\"cake.error\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "140587e0-ef7a-4226-bb1c-714a3990a031",
+        "level": "info",
+        "message": "Attempting to create user with data: {\"username\":\"admin\",\"confirm_password\":\"password\",\"email\":\"admin@test.com\",\"is_admin\":true,\"active\":1}",
+        "context": "{\"scope\":[\"user_management\",\"user_creation\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "1db31da9-a38d-4e72-9a62-494cde613591",
+        "level": "error",
+        "message": "[Cake\\Datasource\\Exception\\InvalidPrimaryKeyException] Record not found in table `requests` with primary key `[NULL]`. in /var/www/html/vendor/cakephp/cakephp/src/ORM/Table.php on line 1514\nStack Trace:\n- ROOT/vendor/cakephp/debug_kit/src/Controller/RequestsController.php:60\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:157\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /debug-kit/toolbar?q=/debug-kit/toolbar&\nClient IP: 151.101.115.52",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "1fb0d514-0d40-40e5-b3b8-5191ac39e7b1",
+        "level": "error",
+        "message": "[Cake\\Http\\Exception\\NotFoundException] Not Found in /var/www/html/vendor/cakephp/debug_kit/src/Controller/PanelsController.php on line 69\nStack Trace:\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:157\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /debug-kit/panels/%2A?q=/debug-kit/panels/*&\nClient IP: 151.101.115.52",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "6663e4c1-12c7-4cf3-b233-7008dfaf45d9",
+        "level": "debug",
+        "message": "Your migration status some differences with the expected state.\n\nMigrations needing to be reversed:\n- Migration to reverse. source=V1 id=20241128230315\n- Migration to reverse. source=ChangeExpiresAtToDatetime id=20241201193813\n- Migration to reverse. source=InsertSettings id=20241202164800\n- Migration to reverse. source=AddRobotsTemplate id=20241203215800\n- Migration to reverse. source=Newslugstable id=20241208194033\n- Migration to reverse. source=ArticleViews id=20241214165907\n- Migration to reverse. source=AddSecuritySettings id=20250523122807\n- Migration to reverse. source=AddRateLimitSettings id=20250523132600\n- Migration to reverse. source=CreateImageGalleries id=20250604074527\n- Migration to reverse. source=AddGalleryAiSettings id=20250605211400\n\nGoing to drop all tables in this source, and re-apply migrations.",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "92a8341b-d6cf-4063-95ee-bff970fc5e5a",
+        "level": "info",
+        "message": "User created successfully: admin (ID: da264525-a966-4ad1-be81-307fd39c62eb)",
+        "context": "{\"scope\":[\"user_management\",\"user_creation\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "97bee3c1-77c3-418a-b0ac-6059eb0e7b10",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "9d41023d-0925-4cee-8e7e-6d3028c697f6",
+        "level": "warning",
+        "message": "MissingTemplateException - Failed to render error template `typeError` . Error: Template file `Error/type_error.php` could not be found.\n\nThe following paths were searched:\n\n- `/var/www/html/plugins/DefaultTheme/templates/plugin/DebugKit/Error/type_error.php`\n- `/var/www/html/plugins/DefaultTheme/templates/Error/type_error.php`\n- `/var/www/html/templates/plugin/DebugKit/Error/type_error.php`\n- `/var/www/html/vendor/cakephp/debug_kit/templates/Error/type_error.php`\n- `/var/www/html/templates/Error/type_error.php`\n- `/var/www/html/vendor/cakephp/cakephp/templates/Error/type_error.php`\n\nStack Trace\n: #0 /var/www/html/vendor/cakephp/cakephp/src/View/View.php(782): Cake\\View\\View->_getTemplateFileName('...')\n#1 /var/www/html/vendor/cakephp/cakephp/src/Controller/Controller.php(712): Cake\\View\\View->render()\n#2 /var/www/html/vendor/cakephp/cakephp/src/Error/Renderer/WebExceptionRenderer.php(432): Cake\\Controller\\Controller->render('...')\n#3 /var/www/html/vendor/cakephp/cakephp/src/Error/Renderer/WebExceptionRenderer.php(277): Cake\\Error\\Renderer\\WebExceptionRenderer->_outputMessage('...')\n#4 /var/www/html/src/Error/AppExceptionRenderer.php(62): Cake\\Error\\Renderer\\WebExceptionRenderer->render()\n#5 /var/www/html/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(149): App\\Error\\AppExceptionRenderer->render()\n#6 /var/www/html/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(119): Cake\\Error\\Middleware\\ErrorHandlerMiddleware->handleException(Object(TypeError), Object(Cake\\Http\\ServerRequest))\n#7 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(82): Cake\\Error\\Middleware\\ErrorHandlerMiddleware->process(Object(Cake\\Http\\ServerRequest), Object(Cake\\Http\\Runner))\n#8 /var/www/html/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php(60): Cake\\Http\\Runner->handle(Object(Cake\\Http\\ServerRequest))\n#9 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(82): DebugKit\\Middleware\\DebugKitMiddleware->process(Object(Cake\\Http\\ServerRequest), Object(Cake\\Http\\Runner))\n#10 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(60): Cake\\Http\\Runner->handle(Object(Cake\\Http\\ServerRequest))\n#11 /var/www/html/vendor/cakephp/cakephp/src/Http/Server.php(104): Cake\\Http\\Runner->run(Object(Cake\\Http\\MiddlewareQueue), Object(Cake\\Http\\ServerRequest), Object(App\\Application))\n#12 /var/www/html/webroot/index.php(37): Cake\\Http\\Server->run()\n#13 {main}",
+        "context": "{\"scope\":[\"cake.error\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "a788203d-51c2-4808-a26e-86b096d88fce",
+        "level": "warning",
+        "message": "MissingTemplateException - Failed to render error template `invalidPrimaryKey` . Error: Template file `Error/invalid_primary_key.php` could not be found.\n\nThe following paths were searched:\n\n- `/var/www/html/plugins/DefaultTheme/templates/plugin/DebugKit/Error/invalid_primary_key.php`\n- `/var/www/html/plugins/DefaultTheme/templates/Error/invalid_primary_key.php`\n- `/var/www/html/templates/plugin/DebugKit/Error/invalid_primary_key.php`\n- `/var/www/html/vendor/cakephp/debug_kit/templates/Error/invalid_primary_key.php`\n- `/var/www/html/templates/Error/invalid_primary_key.php`\n- `/var/www/html/vendor/cakephp/cakephp/templates/Error/invalid_primary_key.php`\n\nStack Trace\n: #0 /var/www/html/vendor/cakephp/cakephp/src/View/View.php(782): Cake\\View\\View->_getTemplateFileName('...')\n#1 /var/www/html/vendor/cakephp/cakephp/src/Controller/Controller.php(712): Cake\\View\\View->render()\n#2 /var/www/html/vendor/cakephp/cakephp/src/Error/Renderer/WebExceptionRenderer.php(432): Cake\\Controller\\Controller->render('...')\n#3 /var/www/html/vendor/cakephp/cakephp/src/Error/Renderer/WebExceptionRenderer.php(277): Cake\\Error\\Renderer\\WebExceptionRenderer->_outputMessage('...')\n#4 /var/www/html/src/Error/AppExceptionRenderer.php(62): Cake\\Error\\Renderer\\WebExceptionRenderer->render()\n#5 /var/www/html/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(149): App\\Error\\AppExceptionRenderer->render()\n#6 /var/www/html/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php(119): Cake\\Error\\Middleware\\ErrorHandlerMiddleware->handleException(Object(Cake\\Datasource\\Exception\\InvalidPrimaryKeyException), Object(Cake\\Http\\ServerRequest))\n#7 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(82): Cake\\Error\\Middleware\\ErrorHandlerMiddleware->process(Object(Cake\\Http\\ServerRequest), Object(Cake\\Http\\Runner))\n#8 /var/www/html/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php(60): Cake\\Http\\Runner->handle(Object(Cake\\Http\\ServerRequest))\n#9 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(82): DebugKit\\Middleware\\DebugKitMiddleware->process(Object(Cake\\Http\\ServerRequest), Object(Cake\\Http\\Runner))\n#10 /var/www/html/vendor/cakephp/cakephp/src/Http/Runner.php(60): Cake\\Http\\Runner->handle(Object(Cake\\Http\\ServerRequest))\n#11 /var/www/html/vendor/cakephp/cakephp/src/Http/Server.php(104): Cake\\Http\\Runner->run(Object(Cake\\Http\\MiddlewareQueue), Object(Cake\\Http\\ServerRequest), Object(App\\Application))\n#12 /var/www/html/webroot/index.php(37): Cake\\Http\\Server->run()\n#13 {main}",
+        "context": "{\"scope\":[\"cake.error\"]}",
+        "group_name": "general"
+    },
+    {
+        "id": "af343f70-a610-4859-a75e-cd431e1ee664",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "bcf0af2e-f19b-4be3-9e3b-a53324d06fee",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "ca890492-1fb9-4088-9938-a5bdc0072ecd",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "e1125f14-b4dd-4d59-8335-0a03e88a8b2b",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "e84c762e-c9f9-439a-b344-5ebac9362fcf",
+        "level": "error",
+        "message": "[TypeError] DebugKit\\Model\\Table\\PanelsTable::findByRequest(): Argument #2 ($requestId) must be of type string|int, null given, called in /var/www/html/vendor/cakephp/cakephp/src/ORM/Table.php on line 2745 in /var/www/html/vendor/cakephp/debug_kit/src/Model/Table/PanelsTable.php on line 57\nStack Trace:\n- CORE/src/ORM/Table.php:2745\n- CORE/src/ORM/Table.php:2645\n- CORE/src/ORM/Table.php:1279\n- ROOT/vendor/cakephp/debug_kit/src/Controller/PanelsController.php:66\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:157\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /debug-kit/panels?q=/debug-kit/panels&\nClient IP: 151.101.115.52",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "fa5698f7-fe38-4b25-91bb-2d975fc855c9",
+        "level": "debug",
+        "message": "Reading migrations status for test...",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    },
+    {
+        "id": "fc07316d-9f6f-42e4-af95-8c5c09c26e22",
+        "level": "error",
+        "message": "[BadMethodCallException] Unknown method `log` called on `App\\Model\\Table\\UsersTable` in /var/www/html/vendor/cakephp/cakephp/src/ORM/Table.php on line 2829\nStack Trace:\n- APP/Model/Table/QueueableJobsTrait.php:33\n- APP/Model/Behavior/QueueableImageBehavior.php:167\n- CORE/src/Event/EventManager.php:330\n- CORE/src/Event/EventManager.php:314\n- CORE/src/Event/EventDispatcherTrait.php:88\n- CORE/src/ORM/Table.php:2108\n- CORE/src/ORM/Table.php:2074\n- CORE/src/ORM/Table.php:1962\n- CORE/src/ORM/Table.php:1587\n- CORE/src/Database/Connection.php:649\n- CORE/src/ORM/Table.php:1587\n- CORE/src/ORM/Table.php:1961\n- APP/Controller/UsersController.php:281\n- CORE/src/Controller/Controller.php:505\n- CORE/src/Controller/ControllerFactory.php:166\n- CORE/src/Controller/ControllerFactory.php:141\n- CORE/src/Http/BaseApplication.php:362\n- CORE/src/Http/Runner.php:86\n- APP/Middleware/RateLimitMiddleware.php:148\n- CORE/src/Http/Runner.php:82\n- APP/Middleware/IpBlockerMiddleware.php:107\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/CsrfProtectionMiddleware.php:169\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/authentication/src/Middleware/AuthenticationMiddleware.php:106\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Middleware/BodyParserMiddleware.php:162\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/admad/cakephp-i18n/src/Middleware/I18nMiddleware.php:110\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/RoutingMiddleware.php:117\n- CORE/src/Http/Runner.php:82\n- CORE/src/Routing/Middleware/AssetMiddleware.php:70\n- CORE/src/Http/Runner.php:82\n- CORE/src/Error/Middleware/ErrorHandlerMiddleware.php:115\n- CORE/src/Http/Runner.php:82\n- ROOT/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60\n- CORE/src/Http/Runner.php:82\n- CORE/src/Http/Runner.php:60\n- CORE/src/Http/Server.php:104\n- ROOT/webroot/index.php:37\n- [main]:\n\nRequest URL: /en/users/edit/da264525-a966-4ad1-be81-307fd39c62eb?q=/en/users/edit/da264525-a966-4ad1-be81-307fd39c62eb&q=/en/users/edit/da264525-a966-4ad1-be81-307fd39c62eb&q=/en/users/edit/da264525-a966-4ad1-be81-307fd39c62eb&\nReferer URL: http://localhost:8080/en/users/edit/da264525-a966-4ad1-be81-307fd39c62eb?q=/en/users/edit/da264525-a966-4ad1-be81-307fd39c62eb&\nClient IP: 151.101.115.52",
+        "context": "{\"scope\":[]}",
+        "group_name": "general"
+    }
+]

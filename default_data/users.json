@@ -1,0 +1,32 @@
+[
+    {
+        "id": "0d36e936-4c59-4f6c-91c7-a124ebb88ae1",
+        "is_admin": false,
+        "email": "robjects@protonmail.com",
+        "password": "$2y$10$aN1RnJxeAc6KFSahyvbSI.RLgTP1KzgjIE4E0lXXHpgsr9ftAtzGO",
+        "image": null,
+        "alt_text": null,
+        "keywords": null,
+        "name": null,
+        "dir": null,
+        "size": null,
+        "mime": null,
+        "username": "robjects",
+        "active": true
+    },
+    {
+        "id": "da264525-a966-4ad1-be81-307fd39c62eb",
+        "is_admin": true,
+        "email": "admin@test.com",
+        "password": "$2y$10$i/KAG.eYPinLs12Q3Kix2.7fC.8z6jZ.aQcoXTgl858grhqQi5UJC",
+        "image": null,
+        "alt_text": null,
+        "keywords": null,
+        "name": null,
+        "dir": null,
+        "size": null,
+        "mime": null,
+        "username": "admin",
+        "active": true
+    }
+]
