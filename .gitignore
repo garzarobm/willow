@@ -105,8 +105,6 @@ project_mysql_backups
 
 # CakePHP Book
 CakePHPBook.txt
-default_data
-default_data/aiprompts.json
-default_data/internationalisations.json
+
 config/.env.sample
 templates/Admin/Products.zip

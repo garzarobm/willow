@@ -1,0 +1,16 @@
+[
+    {
+        "id": "2591283e-4989-4095-964f-145c5b49d3c2",
+        "article_id": "219bca25-196f-4127-8349-5ac70cc87a73",
+        "ip_address": "151.101.115.52",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15",
+        "referer": "/admin"
+    },
+    {
+        "id": "c802eb88-d873-4b0d-8ed8-eee73cd331d5",
+        "article_id": "4061963d-b37d-41b7-9183-f94ce942684e",
+        "ip_address": "151.101.115.52",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15",
+        "referer": "/admin/slugs?status=Articles"
+    }
+]
