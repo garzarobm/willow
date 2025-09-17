@@ -53,6 +53,7 @@ services:
       - WILLOW_ADMIN_PASSWORD=password
       - WILLOW_ADMIN_EMAIL=admin@test.com
       - APP_FULL_BASE_URL=http://localhost:8080
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
       #       # - APP_NAME=${APP_NAME}
       # - DEBUG=${DEBUG}
       # - APP_ENCODING=${APP_ENCODING}
