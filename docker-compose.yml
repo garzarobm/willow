@@ -17,10 +17,10 @@ services:
       - ./cakephp/config/.env
     environment:
       # Override specific Docker networking settings that may not be in .env
-      - DB_HOST=mysql
-      - TEST_DB_HOST=mysql
-      - REDIS_HOST=willowcms
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      DB_HOST: mysql
+      TEST_DB_HOST: mysql
+      REDIS_HOST: willowcms
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
 
 
   mysql:
