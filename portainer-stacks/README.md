@@ -243,3 +243,25 @@ For issues and questions:
 ---
 
 **Note**: This stack is designed for Portainer deployment with Git repository integration. Ensure your Portainer instance has access to the GitHub repository and proper permissions to pull the source code.
+---
+
+## 📝 **Important: File Location**
+
+### **Primary Deployment File:**
+The main cloud deployment file is located at the **repository root**:
+- **Location:** `docker-compose-cloud.yml` (root directory)
+- **Reason:** Simpler path for Portainer, better Docker Compose context resolution
+
+### **Portainer Path:**
+```
+Compose path: docker-compose-cloud.yml
+```
+
+### **Backup Copy:**
+A copy is maintained in this directory (`portainer-stacks/docker-compose-cloud.yml`) for:
+- Documentation purposes
+- Keeping Portainer-related files organized
+- Reference and backup
+
+**Note:** If updating the deployment configuration, update both locations.
+
