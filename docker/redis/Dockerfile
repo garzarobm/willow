@@ -1,14 +1,10 @@
 # Build arg allows pinning via compose
 ARG REDIS_TAG=7.2-alpine
-FROM redis:${REDIS_TAG}
 
-# Copy config and guard script
-COPY docker/redis/redis.conf /usr/local/etc/redis/redis.conf
-COPY tools/redis/bootguard.sh /opt/redis/bootguard.sh
-RUN chmod +x /opt/redis/bootguard.sh
+# Use official Redis image - it already handles /data directory setup
+# Explicitly specify platform for Apple Silicon (ARM64) compatibility
+FROM --platform=linux/arm64/v8 redis:${REDIS_TAG}
 
-# Ensure data directory exists with correct permissions
-RUN mkdir -p /data && chown redis:redis /data
-
-# Use the guard as entrypoint; it will chain to the official entrypoint
-ENTRYPOINT ["/opt/redis/bootguard.sh"]
+# The official Redis image already creates /data with proper permissions
+# and sets up the redis user correctly.
+# Configuration will be handled via command line arguments in docker-compose.yml
