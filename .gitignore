@@ -7,6 +7,31 @@
 .env.production
 .env.staging
 .env.testing
+
+# Environment & Configuration Files (Security Critical) #
+#########################################################
+# All environment files except templates and stack configs
+env/*.env
+!env/stack.env.example
+.env
+.env.*
+!.env.example
+!stack.env
+
+# Portainer & Container Management #
+####################################
+# Portainer tokens and credentials
+.portainer-token*
+*.token
+.portainer/
+portainer/
+portainer.yml
+
+# Docker Compose variants (except main ones)
+docker-compose.override.yml
+docker-compose.prod.yml
+docker-compose.staging.yml
+docker-compose.dev.yml
 /cakephp/logs/*
 /cakephp/tmp/*
 /cakephp/vendor/*
@@ -166,6 +191,38 @@ project_mysql_backups/
 *.backup
 *.dump
 docker-compose-*.yml
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# Security & Secrets (Enhanced) #
+#################################
+# API keys and tokens
+api_keys/
+tokens/
+credentials/
+secrets/
+.secrets
+
+# SSH and SSL certificates
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+*.pub
+*.ppk
+
+# Database & Cache Files (Enhanced) #
+#####################################
+mysql_data/
+redis_data/
+data/
+*.sqlite
+*.sqlite3
+*.db
+cache/
 
 # CakePHP Book
 CakePHPBook.txt
