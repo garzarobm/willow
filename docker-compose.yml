@@ -35,6 +35,7 @@ services:
       - "${MYSQL_PORT:-3310}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./docker/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
       # - mysql_data:/docker-entrypoint-initdb.d:ro
       - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:

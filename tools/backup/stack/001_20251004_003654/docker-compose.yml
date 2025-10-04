@@ -7,6 +7,7 @@
 # 2. Portainer Stack: Uses environment variables defined in Portainer UI + stack.env
 # 3. Git Repository: Automatic deployment from GitHub with environment variables
 
+version: '3.8'
 
 services:
   willowcms:
@@ -16,18 +17,14 @@ services:
       args:
         - UID=${DOCKER_UID:-1000}
         - GID=${DOCKER_GID:-1000}
-    image: ${WILLOWCMS_IMAGE:-willowcms:main-clean-hardened}
     ports:
       - "${WILLOW_HTTP_PORT:-8080}:80"
     volumes:
-      - ${WILLOWCMS_CODE_PATH:-willow_app_data}:/var/www/html/
-      - ${WILLOWCMS_LOGS_PATH:-willow_logs}:/var/www/html/logs/
-      - ${WILLOWCMS_NGINX_LOGS_PATH:-willow_nginx_logs}:/var/log/nginx/
-      - ${WILLOWCMS_STORAGE_PATH:-willow_storage}:/var/www/html/tmp/
-    security_opt:
-      - no-new-privileges:true
+      - willow_app_data:/var/www/html/
+      - willow_logs:/var/www/html/logs/
+      - willow_nginx_logs:/var/log/nginx/
     env_file:
-      - ../stack.env
+      - stack.env
     environment:
       # App Configuration
       - APP_NAME=${APP_NAME:-WillowCMS}
@@ -105,7 +102,7 @@ services:
         condition: service_started
     restart: unless-stopped
     networks:
-      - willow_network
+      - ${NETWORK_NAME:-willow_network}
 
   redis:
     image: redis:${REDIS_TAG:-7.2-alpine}
@@ -117,7 +114,7 @@ services:
       --save 300 10
       --save 60 10000
     env_file:
-      - ../stack.env
+      - stack.env
     environment:
       - TZ=${APP_DEFAULT_TIMEZONE:-America/Chicago}
     healthcheck:
@@ -129,7 +126,7 @@ services:
       - willow_redis_data:/data
     restart: unless-stopped
     networks:
-      - willow_network
+      - ${NETWORK_NAME:-willow_network}
 
   mysql:
     image: mysql:${MYSQL_IMAGE_TAG:-8.0}
@@ -139,7 +136,7 @@ services:
     volumes:
       - willow_mysql_data:/var/lib/mysql
     env_file:
-      - ../stack.env
+      - stack.env
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -157,7 +154,7 @@ services:
       --general-log-file=/var/log/mysql/query.log
     restart: unless-stopped
     networks:
-      - willow_network
+      - ${NETWORK_NAME:-willow_network}
 
   phpmyadmin:
     image: phpmyadmin:${PHPMYADMIN_IMAGE_TAG:-latest}
@@ -166,7 +163,7 @@ services:
     ports:
       - "${PMA_HTTP_PORT:-8082}:80"
     env_file:
-      - ../stack.env
+      - stack.env
     environment:
       - PMA_HOST=mysql
       - PMA_USER=${PMA_USER:-root}
@@ -175,7 +172,7 @@ services:
       - TZ=${APP_DEFAULT_TIMEZONE:-America/Chicago}
     restart: unless-stopped
     networks:
-      - willow_network
+      - ${NETWORK_NAME:-willow_network}
 
   mailpit:
     image: axllent/mailpit:${MAILPIT_IMAGE_TAG:-latest}
@@ -186,7 +183,7 @@ services:
       - willow_mailpit_data:/data
       - willow_mailpit_logs:/var/log/mailpit
     env_file:
-      - ../stack.env
+      - stack.env
     environment:
       - MP_MAX_MESSAGES=${MP_MAX_MESSAGES:-5000}
       - MP_DATABASE=/data/mailpit.db
@@ -195,7 +192,7 @@ services:
       - TZ=${APP_DEFAULT_TIMEZONE:-America/Chicago}
     restart: unless-stopped
     networks:
-      - willow_network
+      - ${NETWORK_NAME:-willow_network}
 
   redis-commander:
     image: rediscommander/redis-commander:${REDIS_COMMANDER_IMAGE_TAG:-latest}
@@ -205,7 +202,7 @@ services:
     ports:
       - "${REDIS_COMMANDER_HTTP_PORT:-8084}:8081"
     env_file:
-      - ../stack.env
+      - stack.env
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=${REDIS_PORT:-6379}
@@ -215,7 +212,7 @@ services:
       - TZ=${APP_DEFAULT_TIMEZONE:-America/Chicago}
     restart: unless-stopped
     networks:
-      - willow_network
+      - ${NETWORK_NAME:-willow_network}
 
 volumes:
   willow_mysql_data:
@@ -232,10 +229,7 @@ volumes:
     driver: ${VOLUME_DRIVER:-local}
   willow_nginx_logs:
     driver: ${VOLUME_DRIVER:-local}
-  willow_storage:
-    driver: ${VOLUME_DRIVER:-local}
 
 networks:
-  willow_network:
+  ${NETWORK_NAME:-willow_network}:
     driver: bridge
-    name: willow_network

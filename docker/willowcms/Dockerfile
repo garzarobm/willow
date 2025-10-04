@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     nginx \
     mysql-client \
     php83 \
+    php83-common \
     php83-ctype \
     php83-curl \
     php83-dom \
