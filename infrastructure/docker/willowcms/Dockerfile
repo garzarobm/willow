@@ -1,3 +1,7 @@
+# Multi-platform build support
+# Platform auto-detection enabled - Docker will use the host's native platform
+# This prevents "exec format error" issues on ARM64 Macs
+
 # FROM alpine:3.22
 FROM robjects/dhi-php-mirror-robjects:8.3-alpine3.22-dev
 

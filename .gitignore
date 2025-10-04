@@ -180,6 +180,11 @@ project_files_backups
 project_mysql_backups
 backups/
 
+# Tools directory backups and references #
+##########################################
+tools/backup/
+tools/reference/
+
 # Prevent leaking secrets in helper files
 helper-files(use-only-if-you-get-lost)/docker-backups/
 
@@ -13719,3 +13724,6 @@ artifacts/services-list.txt
 artifacts/services-map.txt
 artifacts/structure-check.txt
 .env.secure
+├── .warp
+tools/backup/app_backups/app_backup_20251004_023924.tar.gz
+tools/backup/app_backups/checksums.txt

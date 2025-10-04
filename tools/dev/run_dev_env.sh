@@ -566,35 +566,45 @@ clean_deployment_state() {
         if [[ -f "$env_file" ]]; then
             print_info "Cleaning deployment settings in $env_file..."
             
+            # Resolve symlinks to get the actual file path
+            local actual_file="$env_file"
+            if [[ -L "$env_file" ]]; then
+                actual_file=$(readlink "$env_file")
+                # If readlink returns a relative path, make it absolute
+                if [[ ! "$actual_file" = /* ]]; then
+                    actual_file="$(dirname "$env_file")/$actual_file"
+                fi
+            fi
+            
             # Set development environment
-            if grep -q "^APP_ENV=" "$env_file"; then
-                sed -i.tmp "s/^APP_ENV=.*/APP_ENV=development/" "$env_file"
+            if grep -q "^APP_ENV=" "$actual_file"; then
+                sed -i.tmp "s/^APP_ENV=.*/APP_ENV=development/" "$actual_file"
             else
-                echo "APP_ENV=development" >> "$env_file"
+                echo "APP_ENV=development" >> "$actual_file"
             fi
             
             # Enable debug mode
-            if grep -q "^DEBUG=" "$env_file"; then
-                sed -i.tmp "s/^DEBUG=.*/DEBUG=true/" "$env_file"
+            if grep -q "^DEBUG=" "$actual_file"; then
+                sed -i.tmp "s/^DEBUG=.*/DEBUG=true/" "$actual_file"
             else
-                echo "DEBUG=true" >> "$env_file"
+                echo "DEBUG=true" >> "$actual_file"
             fi
             
             # Set development log level
-            if grep -q "^LOG_LEVEL=" "$env_file"; then
-                sed -i.tmp "s/^LOG_LEVEL=.*/LOG_LEVEL=debug/" "$env_file"
+            if grep -q "^LOG_LEVEL=" "$actual_file"; then
+                sed -i.tmp "s/^LOG_LEVEL=.*/LOG_LEVEL=debug/" "$actual_file"
             else
-                echo "LOG_LEVEL=debug" >> "$env_file"
+                echo "LOG_LEVEL=debug" >> "$actual_file"
             fi
             
             # Ensure development database settings (if not using Docker defaults)
-            if grep -q "^DB_HOST=" "$env_file" && ! grep -q "^DB_HOST=mysql" "$env_file"; then
-                sed -i.tmp "s/^DB_HOST=.*/DB_HOST=mysql/" "$env_file"
+            if grep -q "^DB_HOST=" "$actual_file" && ! grep -q "^DB_HOST=mysql" "$actual_file"; then
+                sed -i.tmp "s/^DB_HOST=.*/DB_HOST=mysql/" "$actual_file"
                 print_info "Reset database host to Docker service name (mysql)"
             fi
             
             # Clean up temporary files
-            rm -f "$env_file.tmp"
+            rm -f "$actual_file.tmp"
         fi
     done
     
@@ -672,8 +682,17 @@ ensure_development_config() {
             print_warning "Production restart policies detected in docker-compose.yml"
             if [[ "$FORCE_CLEAN_DEV" -eq 1 ]]; then
                 print_info "Removing production restart policies..."
-                sed -i.tmp "s/restart:.*always/# restart: always # Disabled for development/g" "docker-compose.yml"
-                rm -f "docker-compose.yml.tmp"
+                # Resolve symlinks for docker-compose.yml if needed
+                local actual_compose="docker-compose.yml"
+                if [[ -L "docker-compose.yml" ]]; then
+                    actual_compose=$(readlink "docker-compose.yml")
+                    # If readlink returns a relative path, make it absolute
+                    if [[ ! "$actual_compose" = /* ]]; then
+                        actual_compose="$(dirname "docker-compose.yml")/$actual_compose"
+                    fi
+                fi
+                sed -i.tmp "s/restart:.*always/# restart: always # Disabled for development/g" "$actual_compose"
+                rm -f "$actual_compose.tmp"
             fi
         fi
     fi
