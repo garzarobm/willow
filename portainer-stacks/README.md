@@ -1,4 +1,8 @@
-# WillowCMS Portainer Stack Deployment
+# 🚀 WillowCMS Portainer Stack
+
+## 📚 Documentation Index
+
+Choose your deployment method:
 
 This directory contains everything needed to deploy WillowCMS using Portainer with Git-based stack deployment.
 
