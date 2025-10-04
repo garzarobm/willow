@@ -1,5 +1,6 @@
 services:
   willowcms:
+    platform: linux/amd64
     build:
       context: .
       dockerfile: infrastructure/docker/dhi_cms/Dockerfile
@@ -40,12 +41,8 @@ services:
       - ./.env
 
   redis:
-    build:
-      context: .
-      dockerfile: docker/redis/Dockerfile
-      args:
-        REDIS_TAG: ${REDIS_TAG:-7.2-alpine}
-    image: willow-redis:${REDIS_TAG:-7.2-alpine}
+    image: redis:${REDIS_TAG:-7.2-alpine}
+    platform: linux/amd64
     environment:
       TZ: ${APP_DEFAULT_TIMEZONE:-America/Chicago}
       REDIS_PASSWORD: ${REDIS_PASSWORD}
@@ -79,6 +76,7 @@ services:
 
   mysql:
     image: mysql:${MYSQL_IMAGE_TAG:-8.0}
+    platform: linux/amd64
     ports:
       - ${MYSQL_PORT:-3310}:3306
     volumes:
@@ -97,6 +95,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:${PHPMYADMIN_IMAGE_TAG:-latest}
+    platform: linux/amd64
     depends_on:
       - mysql
     ports:
@@ -111,6 +110,7 @@ services:
 
   mailpit:
     image: axllent/mailpit:${MAILPIT_IMAGE_TAG:-latest}
+    platform: linux/amd64
     ports:
       - ${MAILPIT_SMTP_PORT:-1125}:1025
       - ${MAILPIT_HTTP_PORT:-8025}:8025
@@ -125,6 +125,7 @@ services:
 
   redis-commander:
     image: rediscommander/redis-commander:${REDIS_COMMANDER_IMAGE_TAG:-latest}
+    platform: linux/amd64
     depends_on:
       redis:
         condition: service_healthy
