@@ -51,18 +51,18 @@ MYSQL_PASSWORD=your-secure-db-password
 REDIS_PASSWORD=your-secure-redis-password
 REDIS_USERNAME=default
 WILLOW_ADMIN_PASSWORD=your-secure-admin-password
-WILLOW_ADMIN_EMAIL=admin@yourdomain.com
+WILLOW_ADMIN_EMAIL=admin@whatismyadapter.me
 
 # Application Settings
 APP_NAME=WhatIsMyAdapter
-APP_FULL_BASE_URL=https://yourdomain.com
+APP_FULL_BASE_URL=https://whatismyadapter.me
 DEBUG=false
 
 # User Permissions (IMPORTANT - must match server user)
 DOCKER_UID=1034
 DOCKER_GID=100
 
-# Ports (adjust if needed)
+# Ports (adjust if needed - use for reverse proxy)
 WILLOW_HTTP_PORT=8080
 MYSQL_PORT=3310
 PMA_HTTP_PORT=8082
@@ -74,10 +74,19 @@ REDIS_COMMANDER_HTTP_PORT=8084
 REDIS_COMMANDER_USERNAME=admin
 REDIS_COMMANDER_PASSWORD=your-redis-commander-password
 
+# Email Addresses
+EMAIL_REPLY=hello@whatismyadapter.me
+EMAIL_NOREPLY=noreply@whatismyadapter.me
+
 # Optional
 APP_DEFAULT_TIMEZONE=America/Chicago
 EXPERIMENTAL_TESTS=Off
 ```
+
+**Important Notes:**
+- **Production:** Set `APP_FULL_BASE_URL=https://whatismyadapter.me`
+- **Development/Testing:** Set `APP_FULL_BASE_URL=http://localhost:8080`
+- **Behind Reverse Proxy:** Container listens on port 8080, proxy handles SSL
 
 ### **Step 5: Deploy**
 
@@ -85,9 +94,54 @@ EXPERIMENTAL_TESTS=Off
 2. Wait 5-10 minutes for build to complete
 3. Monitor logs in Portainer
 
-### **Step 6: Verify Services**
+### **Step 6: Set Up Reverse Proxy (Production)**
 
-Access your services:
+#### **Nginx Reverse Proxy Example:**
+
+```nginx
+server {
+    listen 80;
+    server_name whatismyadapter.me;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name whatismyadapter.me;
+
+    # SSL Configuration
+    ssl_certificate /etc/ssl/certs/whatismyadapter.me.crt;
+    ssl_certificate_key /etc/ssl/private/whatismyadapter.me.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    # Proxy to Docker container
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+    }
+}
+```
+
+#### **Caddy Reverse Proxy Example:**
+
+```caddy
+whatismyadapter.me {
+    reverse_proxy localhost:8080
+}
+```
+
+### **Step 7: Verify Services**
+
+**Production (via reverse proxy):**
+- **Application:** `https://whatismyadapter.me`
+- **Admin Panel:** `https://whatismyadapter.me/admin`
+
+**Direct Access (internal/testing):**
 - **Application:** `http://your-server:8080`
 - **Admin Panel:** `http://your-server:8080/admin`
 - **PHPMyAdmin:** `http://your-server:8082`
@@ -113,6 +167,33 @@ Access your services:
 - **Username:** `whatismyadapter`
 - **UID:** `1034`
 - **GID:** `100` (users group)
+
+---
+
+## 🌐 Domain & URL Configuration
+
+### **Production Setup (with Reverse Proxy):**
+```bash
+APP_FULL_BASE_URL=https://whatismyadapter.me
+WILLOW_HTTP_PORT=8080  # Container port (not exposed publicly)
+```
+
+**Setup:**
+1. Container runs on `localhost:8080`
+2. Reverse proxy (Nginx/Caddy) listens on ports 80/443
+3. Proxy handles SSL/TLS termination
+4. Proxy forwards to `localhost:8080`
+
+### **Development/Testing Setup (Direct Access):**
+```bash
+APP_FULL_BASE_URL=http://localhost:8080
+WILLOW_HTTP_PORT=8080  # Exposed publicly
+```
+
+**Setup:**
+1. Container runs on `0.0.0.0:8080`
+2. Direct access without reverse proxy
+3. No SSL (use for testing only)
 
 ---
 
@@ -163,6 +244,28 @@ ls -ln /volume1/docker/whatismyadapter/
 - Check MySQL logs in Portainer
 - Verify MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE are set correctly
 - MySQL runs as its own user (999:999), not as whatismyadapter user
+
+### Reverse Proxy Issues
+
+**Application redirects to wrong URL:**
+```bash
+# Make sure APP_FULL_BASE_URL matches your public domain
+APP_FULL_BASE_URL=https://whatismyadapter.me
+```
+
+**SSL errors:**
+- Verify SSL certificates are valid
+- Check reverse proxy configuration
+- Ensure proxy sets X-Forwarded-Proto header
+
+**Cannot access container:**
+```bash
+# Test direct access first
+curl http://localhost:8080
+
+# Check if port is accessible
+netstat -tlnp | grep 8080
+```
 
 ### Volume Permission Issues
 
@@ -220,7 +323,9 @@ To completely remove the stack:
 3. **Volumes are host-mounted** at `/volume1/docker/whatismyadapter`
 4. **Data persists** between stack updates/restarts
 5. **User UID:1034 and GID:100** must be consistent across environment variables and host
-6. **Backup** your MySQL data regularly
+6. **Use reverse proxy** for production SSL/TLS termination
+7. **APP_FULL_BASE_URL** must match your public domain
+8. **Backup** your MySQL data regularly
 
 ---
 
@@ -229,10 +334,15 @@ To completely remove the stack:
 1. **Create the whatismyadapter user** before deploying
 2. **Use strong passwords** for all services
 3. **Never use default passwords** in production
-4. **Set up firewall rules** to restrict access
-5. **Use SSL/TLS** for production deployments
+4. **Set up firewall rules** to restrict access:
+   ```bash
+   # Only allow ports 80, 443 publicly
+   # Keep 8080, 3310, 8082, etc. internal only
+   ```
+5. **Use SSL/TLS** via reverse proxy for production
 6. **Regular backups** of `/volume1/docker/whatismyadapter`
 7. **Monitor logs** for suspicious activity
+8. **Keep containers updated** with latest security patches
 
 ---
 
@@ -241,13 +351,16 @@ To completely remove the stack:
 - [ ] User `whatismyadapter` (UID:1034, GID:100) created on server
 - [ ] All directories owned by 1034:100
 - [ ] All services showing as "running" in Portainer
-- [ ] Application accessible at your domain/IP
+- [ ] Reverse proxy configured (Nginx/Caddy)
+- [ ] SSL certificate installed and valid
+- [ ] DNS pointing to server: `whatismyadapter.me → your-server-ip`
+- [ ] Application accessible at `https://whatismyadapter.me`
 - [ ] Admin panel login works
-- [ ] PHPMyAdmin database connection works
+- [ ] PHPMyAdmin database connection works (internal access)
 - [ ] Check logs for any errors
-- [ ] Set up SSL/TLS certificate (recommended)
 - [ ] Configure firewall rules
 - [ ] Set up automated backups
+- [ ] Test email functionality (Mailpit)
 
 ---
 
@@ -264,4 +377,31 @@ To completely remove the stack:
 
 ---
 
+## 🌐 Network Architecture
+
+```
+Internet
+    ↓
+Port 80/443 (Reverse Proxy - Nginx/Caddy)
+    ↓ SSL Termination
+localhost:8080 (WhatIsMyAdapter Container)
+    ↓
+mysql:3306 (Internal network only)
+redis:6379 (Internal network only)
+```
+
+**Public Access:**
+- `https://whatismyadapter.me` → Application
+
+**Internal Access Only:**
+- `http://localhost:8080` → Application (direct)
+- `http://localhost:8082` → PHPMyAdmin
+- `http://localhost:8025` → Mailpit
+- `http://localhost:8084` → Redis Commander
+- `http://localhost:3310` → MySQL
+
+---
+
 **Ready to deploy? Follow the steps above! 🚀**
+
+**Production URL:** https://whatismyadapter.me
