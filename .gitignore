@@ -13727,3 +13727,6 @@ artifacts/structure-check.txt
 ├── .warp
 tools/backup/app_backups/app_backup_20251004_023924.tar.gz
 tools/backup/app_backups/checksums.txt
+
+# Ignore legacy cakephp directory (use ./app/ instead)
+cakephp/
