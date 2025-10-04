@@ -14,8 +14,8 @@ services:
       context: ${GIT_URL}#${GIT_REF}
       dockerfile: infrastructure/docker/willowcms/Dockerfile
       args:
-        - UID=${DOCKER_UID:-1000}
-        - GID=${DOCKER_GID:-1000}
+        - UID=${DOCKER_UID:-1034}
+        - GID=${DOCKER_GID:-100}
     image: ${WILLOWCMS_IMAGE:-willowcms:main-clean-hardened}
     ports:
       - "${WILLOW_HTTP_PORT:-8080}:80"
