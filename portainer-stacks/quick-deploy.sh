@@ -55,7 +55,7 @@ WILLOW_ADMIN_PASSWORD=${ADMIN_PASSWORD}
 REDIS_COMMANDER_PASSWORD=${COMMANDER_PASSWORD}
 
 # === REQUIRED APPLICATION SETTINGS ===
-APP_FULL_BASE_URL=https://your-domain.com
+APP_FULL_BASE_URL=https://whatisyouradapter.robjects.me
 WILLOW_ADMIN_EMAIL=admin@your-domain.com
 
 # === OPTIONAL SETTINGS (customize as needed) ===
