@@ -97,6 +97,29 @@ phpunit_cov
 - For permission issues, use the `change_ownership` function from dev_aliases.txt
 - To rebuild completely: `./run_dev_env.sh --rebuild --no-interactive`
 
+## Data Seeding
+
+**Note**: The `default_data/` directory is intentionally kept empty in version control for security reasons.
+
+The development setup script may attempt to import seed data for AI prompts, email templates, and internationalization. 
+If these files don't exist, the import will be skipped with a warning (this is expected behavior).
+
+For seeding data in your development environment:
+
+1. **Use database migrations** to create initial data structures
+2. **Create data via the Admin UI** at http://localhost:8080/admin
+3. **Use environment variables** for configuration (see `.env` files)
+4. **Export/Import locally** if needed:
+   ```bash
+   # Export your current data (saves to default_data/)
+   docker compose exec willowcms bin/cake default_data_export
+   
+   # Import from local files (if you have seed files)
+   docker compose exec willowcms bin/cake default_data_import
+   ```
+
+See [SECURITY.md](SECURITY.md) for the full policy on default data and seed files.
+
 ## File Structure
 
 ```

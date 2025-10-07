@@ -125,8 +125,10 @@ docker-compose-*.yml
 CakePHPBook.txt
 
 # Default Data
-default_data
+# Ignore all files in default_data directory, but keep the directory structure
 default_data/*
+# Allow .gitkeep to preserve the directory
+!default_data/.gitkeep
 
 .hidden-items.json
 docker/willowcms/config/php/php.ini
