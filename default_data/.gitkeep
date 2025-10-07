@@ -1,0 +1,3 @@
+# This directory is preserved for the default_data import/export commands.
+# Files in this directory should NOT be committed to version control.
+# Use environment variables, database migrations, or admin UI for seeding data.
